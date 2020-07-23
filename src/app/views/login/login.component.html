@@ -1,0 +1,53 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mx-auto">  
+              <div class="card-body">  
+                <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate >
+                  <div class="logo-name text-lg text-center mb-15">
+                      <img src="assets/img/images/indian.jpg" style="width:250px;" class=" img-responsive center" alt="gfd">
+                      <p class="pipeline">Pipelines Division</p>
+                    </div>
+                  
+                  <div class="mb-3">
+                    <!-- <div class="input-group-prepend">
+                    </div> -->
+                   
+                    <input type="text" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{2,}[.]{1}[a-zA-Z]{2,}" name='username' #username="ngModel"   [(ngModel)]="loginDtls.username" class="form-control" placeholder="User Id" autocomplete="username" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required>
+                    <div *ngIf="f.submitted && username.invalid">
+                      <div *ngIf="username.errors.required" class="text-danger text-left">Email is required</div>
+                      
+                      <div *ngIf="username.errors.pattern" class="text-danger text-left">Enter Valid Email</div>
+                  </div>
+                  <!-- <div class="input-group-prepend">
+                  </div> -->
+                  </div>
+                  <div class="mb-4">
+                    <div class="input-group-prepend">
+                    </div>
+                    <input type="password" pattern="^((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,})*$" name='password' #password="ngModel"  [(ngModel)]="loginDtls.password" class="form-control" placeholder="Password" autocomplete="current-password" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="8">
+                    <div *ngIf="f.submitted && password.invalid">
+                      <div *ngIf="password.errors.required" class="text-danger text-left">Password is required</div>
+                      <!-- <div *ngIf="password.errors.minlength" class="text-danger text-left">Password must be at least 8 characters</div> -->
+                      <div *ngIf="password.errors.pattern" class="text-danger text-left">Must contain at least 1 Capital Letter,1 Small Letter,1 Special Character,1 Number and Must be atleast 8 characters!</div>
+                  </div>
+                  </div>
+                  <div class="checkbox">
+
+                      <label class="pull-right">
+                          <a routerLink="/forgotpassword">Forgot Password?</a>
+                      </label>
+                  </div>
+                  <button  type="submit"  class="btn btn-danger btn-block">Login</button>
+                  <!-- <button  [disabled]="!username.valid || !password.valid" type="button" (click)="login()" class="btn btn-danger btn-block">Login</button> -->
+                </form>
+               
+              </div>
+              <p class="text-center m-t-xs text-sm">{{year}} &copy;  IOCL Pipelines Division.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<p-toast life="10000"  position="top-center" ></p-toast>

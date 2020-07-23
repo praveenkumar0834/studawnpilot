@@ -1,0 +1,199 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>{{pageTitle}}</h1>
+
+        </div>
+    </div>
+
+</div>
+<hr style="margin-left: -30px;margin-right: -30px;">
+
+<div class="row mt-20">
+    <div class="col-md-12">
+        <form class="form-horizontal" name="form" #f="ngForm" novalidate>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Project Name
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input pattern="^[A-Za-z0-9 ]+$" class="form-control" name='projectName' #projectName="ngModel"
+                        [(ngModel)]="manageProject.projectName" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && projectName.invalid">
+                        <div *ngIf="projectName.errors.required" class="text-danger text-left">Project Name is required
+                        </div>
+
+                        <div *ngIf="projectName.errors.pattern" class="text-danger text-left">Enter valid project name
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row" style="margin-top:20px;">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Region
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+           <!-- {{manageProject.region}} -->
+                    <select name='region' disabled #region="ngModel" [(ngModel)]="manageProject.region"
+                        class="form-control">
+                        <option [value]="loginusrDetails.regionId">{{loginusrDetails.regionName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Description
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input pattern="^[A-Za-z]+$" class="form-control" name='description' #description="ngModel"
+                        [(ngModel)]="manageProject.description" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && description.invalid">
+                        <div *ngIf="description.errors.required" class="text-danger text-left">Description is required
+                        </div>
+
+                        <div *ngIf="description.errors.pattern" class="text-danger text-left">Enter valid description
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Approval Date
+                </label>
+                <div class="col-md-4">
+                   
+                    <my-date-picker name="approvalDate"  #approvalDate="ngModel" [options]="myDatePickerOptions"
+                        [(ngModel)]="manageProject.approvalDate"
+                       placeholder="Choose Approval Date" >
+                       </my-date-picker>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Schedule Completion
+                </label>
+                <div class="col-md-4">
+                   
+                        <my-date-picker [(ngModel)]="manageProject.scheduleCompletionDate" name='scheduleCompletionDate' #scheduleCompletionDate="ngModel"
+                    [options]="myDatePickerOptions"  placeholder="Choose ScheduleCompletion Date"> </my-date-picker>
+
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">ROW
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <select name="row" #row="ngModel" required [(ngModel)]="manageProject.row" class="form-control">
+                        <option value="" disabled selected>Select ROW</option>
+                        <option *ngFor="let x of rowList" value={{x.gmId}}>{{x.gmName}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && row.invalid">
+                        <div *ngIf="row.errors.required" class="text-danger text-left">ROW is required</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- <div > -->
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Notification 3(1)
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input pattern="^[a-zA-Z\s]*$" class="form-control" name='notificatio31' #notificatio31="ngModel"
+                        [(ngModel)]="manageProject.notificatio31" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && notificatio31.invalid">
+                        <div *ngIf="notificatio31.errors.required" class="text-danger text-left">Notification is
+                            required</div>
+
+                        <div *ngIf="notificatio31.errors.pattern" class="text-danger text-left">Enter valid
+                            notificatio31</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">CA Office
+                    <span style="color: red">*</span>
+                </label>
+<!-- {{selectedcaoffices}} -->
+                <div class="col-md-4">
+                    <p-multiSelect required name='caOffices' #caOffices="ngModel" optionLabel="caName" [options]="caofficeList"
+                        [(ngModel)]="selectedcaoffices"></p-multiSelect>
+                        <div *ngIf="f.submitted && caOffices.invalid">
+                            <div *ngIf="caOffices.errors.required" class="text-danger text-left">CAOffice is
+                                required</div>
+    
+                            
+                        </div>
+                    </div>
+                   
+            </div>
+
+
+
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-2" *ngIf="addbtnFlag">
+                    <button type="submit" (click)="addProject(f.form.valid)" class="blue-button">
+                        Add
+                    </button> </div>
+
+                <div class="col-md-2" *ngIf="!addbtnFlag">
+                    <button type="submit" (click)="updateProject(f.form.valid)" class="blue-button">
+                        Update
+                    </button> </div>
+                <div class="col-md-2">
+                    <button type="button" (click)="cancel()" class="cancel-button">
+                        Cancel
+                    </button>  </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+<p-toast position="bottom-right"></p-toast>
+
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  fullScreen="false "
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

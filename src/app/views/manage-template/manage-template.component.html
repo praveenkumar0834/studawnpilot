@@ -1,0 +1,111 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>Manage Templates</h1>
+        </div>
+    </div>
+    <!-- <div class="col-md-2 mt-40">
+        <button type="submit" routerLink="/add-manage-ca-offices" class="blue-button">Add</button>
+    </div> -->
+</div>
+<div class="form-group row">
+    <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <button (click)="myModal.show()" type="submit" style="width:100px;padding:5px;"
+                class="blue-button">Add</button>
+        </div>
+    
+</div>
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th>
+                   Template Name
+                </th>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Uploaded date
+                </th>
+                <th>
+                    Action
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of templateList" >
+                <td>{{x.templateName}}</td>
+                <td>{{x.projectName}}</td>
+                <td>{{x.uploadedDate}}</td>
+                <td style="cursor:pointer">
+                    <a  style="color: #000000" checked data-toggle="toggle">Download</a>
+                    <!-- <input checked data-toggle="toggle"> -->
+                    <!-- <a  style="color: #000000">Download</a> -->
+                    <!-- <button class="btn" style="width:28% ;color:white;background-color:blue;border:2px;" >
+                        <i class="fa fa-download"></i> Download</button> -->
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <!-- <pagination-controls (pageChange)="p = $event" class="my-pagination" style="text-align: right">
+        </pagination-controls>  -->
+</div>
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 600px;margin-left: -15px;">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Template</h4>
+                <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-horizontal" [formGroup]="paymentForm"><br>
+                <div class="form-group row">
+                    
+                    <label class="col-md-3 col-form-label" for="text-input" style="margin-left: 15px;">Template Name
+                        <!-- <span style="color: red">*</span> -->
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" formControlName="templateName" class="form-control" maxlength="30"
+                            required autocomplete="off">
+                    </div>
+                </div>    
+                <div class="form-group row">
+                    <!-- <label class="col-md-1 col-form-label" for="text-input">
+                    </label> -->
+                    <label class="col-md-3 col-form-label" for="text-input" style="margin-left: 15px;">Project Name
+                        <!-- <span style="color: red">*</span> -->
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" formControlName="projectName" class="form-control" maxlength="30"
+                            required autocomplete="off">
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- <div class="col-md-1"></div> -->
+                    <div class="col-md-3">
+                        <label class="col-form-label" for="text-input" style="margin-left: 15px;">File upload
+                            <!-- <span style="color: red">*</span> -->
+                        </label>
+                    </div>
+                    <!-- <div class="col-md-1"></div> -->
+                    <div class="col-md-5">
+                        <input type="file" #file multiple (change)="myUploader($event)"
+                            class="form-control"  required style="margin-left: 15px;">
+                    </div>   
+                </div>                         
+            </form>
+            <br>
+            <div class="modal-footer">
+                <button type="button" style="width: 125px;" class="btn btn-secondary" (click)="myModal.hide()">Cancel</button>
+                <button type="submit" style="width:125px" (click)="payment()" class="btn btn-danger btn-rounded">Add</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

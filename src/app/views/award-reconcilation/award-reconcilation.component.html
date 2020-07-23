@@ -1,0 +1,209 @@
+<div class="form-group row">
+    <div class="col-md-9">
+        <div class="input-group">
+            <h1>Account Reconciliation</h1>
+
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="input-group">
+            <button class="btn"
+                style="width:100% ;margin-left:55px;margin-top:45px;color:white;background-color:#000000;border:2px;"><i
+                    class="fa fa-download"></i> Download BRS</button>
+
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+            <h6 style="margin-top:3px;font-size: 16px;">Upload Monthly Bank Statement</h6>
+
+        </div>
+    </div>
+    <div class="col-md-5">
+        <input type="file" #file multiple (change)="myUploader($event)" style="height:40px"
+            class="form-control"  required>
+    </div>
+    <div class="col-md-1">
+        
+    </div>
+    <div class="col-md-3">
+        <button class="blue-button" style="width:78%;margin-left:53px;">Generate BRS</button>
+    </div>
+
+
+</div>
+
+
+
+
+<hr>
+<br>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;border-top: 1px solid;margin-left: 35px;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th colspan="7" style="border-right:1px solid #000000;border-left:1px solid;text-align: left;
+                font-size: 16px">Particulars</th>
+                <th colspan="1" style="border-right:1px solid #000000;text-align: center;font-size: 16px;">Amount (Rs)</th>
+                <th colspan="1" style="border-right:1px solid;text-align: center;font-size: 16px;width: 100px;">Amount (Rs)</th>
+                <!-- <th colspan="1"></th>
+                <th></th> -->
+
+            </tr>
+            <tr>
+                <td style="width: 400px;font-weight:bold;font-size:13px;border-left:1px solid"><span style="font-size: 15px;"> Amount released by IOCL</span><br><br>
+                    LAND<br><br>
+                    CROP
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"></td>
+                <td style="border-right:1px solid #000000;text-align: right;font-size: 14px;width: 100px;"><br><br>
+                    4,82,60,818.00 <br><br>
+                    1,08,53,511.00
+                </td>
+                <td style="text-align: right;font-size: 14px;border-right:1px solid"><br><br><br><br><br><br><br><br>5,91,14,329.00 </td>
+                <td></td>
+                <!-- <td style=""></td> -->
+
+
+            </tr>
+            <tr>
+                <td style="width: 340px;font-weight:bold;font-size:13px;border-left:1px solid">
+                    <span style="font-size: 15px;"> Amount disburse till 31.12.2015</span><br><br>
+                    LAND<br><br>
+                    CROP
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"></td>
+                <td style="border-right:1px solid #000000;text-align: right;font-size: 14px;"><br><br>
+                    3,73,40,711.00 <br><br>
+                    76,46,302.00
+                </td>
+                <td style="text-align: right;font-size: 14px;border-right:1px solid"><br><br><br><br>4,49,87,013.00</td>
+                <td></td>
+                <!-- <td style=""></td> -->
+
+
+            </tr>
+            <tr>
+                <td style="width: 340px;font-weight:bold;font-size:13px;border-left:1px solid">
+                    <span style="font-size: 15px;">Balance as per cash book (As per Acquittance Roll)</span> </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"></td>
+                <td style="border-right:1px solid #000000;text-align: right;">
+                </td>
+                <td style="text-align: right;font-size: 14px;border-right:1px solid"> 1,41,27,316.00
+                </td>
+                <td sty></td>
+                <!-- <td style=""></td> -->
+
+
+            </tr>
+            <tr>
+                <td style="width: 340px;font-weight:bold;font-size:13px;border-left:1px solid">
+                   <span style="font-size: 15px;">Add:Cheque issued but not presented in bank</span> </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000;border-right:1px solid"></td>
+                <td style="border-right:1px solid #000000;text-align: right;font-size: 14px;">88,55,813.00 
+                </td>
+                <td style="border-right:1px solid"> 
+                </td>
+                <td></td>
+                <!-- <td style=""></td> -->
+
+
+            </tr>
+            <tr>
+                <td style="width: 340px;font-weight:bold;font-size:13px;border-left:1px solid">
+                   <span style="font-size: 15px;">Less:Bank charges</span> </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"> </td>
+                <td style="border-right:1px solid #000000;text-align: right;font-size: 14px;">3,901.00 
+                </td>
+                <td style="text-align: right;font-size: 14px;border-right:1px solid"> 88,51,912.00 
+                </td>
+                <td></td>
+                <!-- <td style=""></td> -->
+
+
+            </tr>
+            <tr>
+                <td style="width: 340px;font-weight:bold;font-size:15px;border-left:1px solid">
+                   <span> Balance as per Bank book</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"> </td>
+                <td style="border-right:1px solid #000000">
+                </td>
+                <td style="text-align: right;font-size: 14px;border-top: 1px solid;border-bottom: 1px solid;border-right:1px solid">2,29,79,228.00 
+                </td>
+                <td></td> 
+                <!-- <td style="border-right:1px solid;border-top: 1px solid;border-bottom: 1px solid;"></td> -->
+
+
+            </tr>
+            <tr style="border-bottom: 1px solid;">
+                <td style="width: 340px;font-weight:bold;font-size:13px;border-left:1px solid">
+                   <span style="font-size: 15px;"> Balance as per bank statement as on 31.12.2015</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border-right:1px solid #000000"> </td>
+                <td style="border-right:1px solid #000000">
+                </td>
+                <td style="text-align: right; font-size: 14px;border-right:1px solid">2,29,79,228.00 
+                </td>
+                <td style="border-bottom: 1px solid white;"></td>
+                <!-- <td style="border-right:1px solid"></td> -->
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+<!-- 
+<div class="card" style="width:50%;margin-top:50px;">
+    <h6 style="margin-left:20px;margin-top:20px;margin-bottom:20px;">
+        Summary
+    </h6>
+    <pre style="margin-left:20px;">Total amount in system                       1098716</pre>
+    <pre style="margin-left:20px;">Total amount in bank statement                313400</pre>
+    <pre style="margin-left:20px;">Unmatched/Difference amount                   785316</pre>
+    <pre style="margin-left:20px;">Matched/Verified                              315234</pre>
+
+    <pre style="margin-left:20px;">Not available in bank statement               500000</pre>
+    <pre style="margin-left:20px;">Not available in bank in system data           10000</pre>
+    <pre style="margin-left:20px;">Amount not matching                           283400</pre>
+
+
+
+
+
+</div> -->

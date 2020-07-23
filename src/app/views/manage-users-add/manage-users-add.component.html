@@ -1,0 +1,223 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>{{pageTitle}}</h1>
+
+        </div>
+    </div>
+
+</div>
+<hr style="margin-left: -30px;margin-right: -30px;">
+<div class="row">
+    <div class="col-md-12">
+
+
+        <form name="form"  #f="ngForm" novalidate >
+            <div class="form-group row" style="margin-top:20px;">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Name
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input  pattern="^[a-zA-Z\s]*$" name='userName' #userName="ngModel"   [(ngModel)]="adduserDtls.userName" class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="f.submitted && userName.invalid">
+                        <div *ngIf="userName.errors.required" class="text-danger text-left">Name is required</div>
+                        
+                        <div *ngIf="userName.errors.pattern" class="text-danger text-left">Alphabets Only Allowed</div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group row" style="margin-top:20px;">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Role
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-md-4">
+                <select name='role' #role="ngModel" required  [(ngModel)]="adduserDtls.role.roleId"  class="form-control">
+                    <option  value="" disabled >Select Role</option>
+                    <option *ngFor="let a of roleList" value="{{a.roleId}}">{{a.roleName}}</option>
+                    
+
+                </select>
+                <div *ngIf="f.submitted && role.invalid">
+                    <div *ngIf="role.errors.required" class="text-danger text-left">Role is required</div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+        <div *ngIf="adduserDtls.role.roleId==1  || adduserDtls.role.roleId==2" class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">CA Office
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-md-4">
+                <select name='caOffcie' #caOffcie="ngModel"  required [(ngModel)]="adduserDtls.caOffice.caOfficeId" class="form-control">
+                    <option value="" disabled>Select CA Office</option>
+                    <option *ngFor="let a of caofficeList" value="{{a.caOfficeId}}">{{a.caName}}</option>
+                   
+
+                </select>
+                <div *ngIf="f.submitted && caOffcie.invalid">
+                    <div *ngIf="caOffcie.errors.required" class="text-danger text-left">CA Office is required</div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Category 
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-md-4">
+                <select name='category' #category="ngModel" required   [(ngModel)]="adduserDtls.category.categoryId" class="form-control">
+                    <option value="" disabled>Select Category</option>
+                    <option *ngFor="let a of categoryList" value="{{a.categoryId}}">{{a.categoryName}}</option>
+                    
+
+                </select>
+                <div *ngIf="f.submitted && category.invalid">
+                    <div *ngIf="category.errors.required" class="text-danger text-left">Category is required</div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Location
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-md-4">
+                <p-dropdown [options]="locationList"  required placeholder="Select a Location" defaultLabel="Choose Location" [(ngModel)]="locationval" name ='location' #location="ngModel" styleClass='W-100' [filter]=true optionLabel="districtName"></p-dropdown>   
+                <div *ngIf="f.submitted && location.invalid">
+                    <div *ngIf="location.errors.required" class="text-danger text-left">Location is required</div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top:20px;">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Region
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <div class="col-md-4">
+                
+                <select name='region'disabled #region="ngModel"   [(ngModel)]="adduserDtls.region.gmId" class="form-control">
+                    <option [value]="loginusrDetails.regionId">{{loginusrDetails.regionName}}</option>
+                </select>
+            </div>
+        </div>
+       
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Email Id
+                <span style="color: red">*</span>
+            </label>
+            <div class="col-md-4">
+                <input pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{2,}[.]{1}[a-zA-Z]{2,}" name='email' #email="ngModel"   [(ngModel)]="adduserDtls.email" class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+                <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required" class="text-danger text-left">Email is required</div>
+                    
+                    <div *ngIf="email.errors.pattern" class="text-danger text-left">Enter Valid Email</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Phone Number
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <div class="col-md-4">
+                <input name='contactNumber' #contactNumber="ngModel" minlength="10" maxlength="15" pattern="^[0-9()+-]*$" [(ngModel)]="adduserDtls.contactNumber" class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+                <div *ngIf="f.submitted && contactNumber.invalid">
+                    <div *ngIf="contactNumber.errors.required" class="text-danger text-left">Phone Number is required</div>
+                    
+                    <div *ngIf="contactNumber.errors.pattern" class="text-danger text-left">Accept Only Numbers</div>
+                    <div *ngIf="contactNumber.errors.minlength" class="text-danger text-left">Please Enter Minimum 10 Numbers</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <label class="col-md-2 col-form-label" for="text-input">Status
+                <span style="color: red">*</span>
+            </label>
+            <!-- <div class="col-md-4">
+                <input  name='userStatus' #userStatus="ngModel" disabled [(ngModel)]="adduserDtls.userStatus" class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+            </div> -->
+            <div  *ngIf="addbtnFlag" class="col-md-4">
+                <select name='userStatus' disabled #userStatus="ngModel"   [(ngModel)]="adduserDtls.userStatus"  class="form-control">
+                    <option disabled value="">Select Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+            <div  *ngIf="!addbtnFlag" class="col-md-4">
+                <select name='userStatus'  #userStatus="ngModel"   [(ngModel)]="adduserDtls.userStatus"  class="form-control">
+                    <option value="">Select Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <div class="col-md-2" *ngIf="addbtnFlag">
+                <button type="submit" (click)="add(f.form.valid)" class="blue-button">
+                    Add
+                </button> </div>
+
+                <div class="col-md-2" *ngIf="!addbtnFlag">
+                    <button type="submit" (click)="update(f.form.valid)" class="blue-button">
+                        Update
+                    </button> </div>
+                
+            <div class="col-md-2">
+                <button type="submit" (click)="cancel()" class="cancel-button">
+                    Cancel
+                </button> </div>
+
+          
+        </div>
+
+
+        </form>
+    </div>
+</div>
+<p-toast life="10000" position="center"></p-toast>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  fullScreen="false"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

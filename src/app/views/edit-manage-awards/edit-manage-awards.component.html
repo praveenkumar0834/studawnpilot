@@ -1,0 +1,1783 @@
+<div class="form-group row">
+    <div class="col-md-8">
+        <div class="input-group">
+            <h1>Edit Award Proposal</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group row">
+            <label class="col-md-7 col-form-label" for="text-input">
+                <!-- <span style="color: red">*</span> -->
+            </label>
+            <div class="col-md-1">
+                <button type="submit" style="width:85px;padding:5px;background-color: #000000;color:#ffffff"
+                    class="btn btn-block">SAVE</button>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" style="width:85px;padding:5px;background-color: #000000;color:#ffffff"
+                    (click)="approvalModel(content)" class="btn btn-block">APPROVE</button>
+
+
+            </div>
+            <div class="col-md-1">
+                <button type="submit" style="width:85px;padding:5px;background-color: #000000;color:#ffffff"
+                    (click)="rejectModel(content1)" class="btn btn-block">REJECT</button>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" style="width: 120px;padding:5px;background-color: #000000;color:#ffffff"
+                    (click)="fundReleaseModel(content2)" class="btn btn-block">FUND RELEASE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row" style="margin-top:20px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <button type="submit" style="margin-left:482px;width:85px;padding:5px;background-color: #000000;color:#ffffff"
+            class="btn btn-block">SAVE</button>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" (click)="myModal2show()"
+        style="margin-left:398px;width:81px;padding:5px;background-color: #000000;color:#ffffff"
+            class="btn btn-block">APPROVE</button>
+    </div>
+    <div class="col-md-2">
+        <button type="submit"
+            style="margin-left:311px;width:70px;padding:5px;background-color: #000000;color:#ffffff"
+            class="btn btn-block">REJECT</button>
+    </div>
+    <div class="col-md-3">
+        <button type="submit" (click)="myModal.show()"
+            style=" margin-left:212px;width:125px;padding:5px;background-color: #000000;color:#ffffff"
+            class="btn btn-block">FUND RELEASE</button>
+    </div>
+</div> -->
+<hr>
+<form class="form-horizontal" [formGroup]="addAwardForm">
+
+
+    <div class="row">
+        <div class="col-md-7 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Award Number
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="awardNumber" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['awardNumber'].invalid && (addAwardForm.controls['awardNumber'].dirty || addAwardForm.controls['awardNumber'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['awardNumber'].errors.required">
+                            Award number required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardNumber'].errors.pattern">Invalid Award number</div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="col-md-2">
+                <a (click)="myModal.show()" [attr.disabled]="listFilter">view</a>
+
+            </div> -->
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Award Date
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="awardDate" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['awardDate'].invalid && (addAwardForm.controls['awardDate'].dirty || addAwardForm.controls['awardDate'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['awardDate'].errors.required">
+                            Award date required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardDate'].errors.pattern">Invalid Award date</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Order of Compensation
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="awardDate" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['awardDate'].invalid && (addAwardForm.controls['awardDate'].dirty || addAwardForm.controls['awardDate'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['awardDate'].errors.required">
+                            Order of Compensation required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardDate'].errors.pattern">Invalid Order of Compensation
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">CA Name
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="CAName" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['CAName'].invalid && (addAwardForm.controls['CAName'].dirty || addAwardForm.controls['CAName'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['CAName'].errors.required">
+                            CA Name required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['CAName'].errors.pattern">Invalid CA Name</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Section
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="section" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['section'].invalid && (addAwardForm.controls['section'].dirty || addAwardForm.controls['section'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['section'].errors.required">
+                            Section required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['section'].errors.pattern">Invalid Section</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">SAP Reference Number
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="sapNo" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['sapNo'].invalid && (addAwardForm.controls['sapNo'].dirty || addAwardForm.controls['sapNo'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['sapNo'].errors.required">
+                            sapNo required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['sapNo'].errors.pattern">Invalid sapNo</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Name of Project
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="projectName" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['projectName'].invalid && (addAwardForm.controls['projectName'].dirty || addAwardForm.controls['projectName'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['projectName'].errors.required">
+                            Project Name required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['projectName'].errors.pattern">Invalid Project Name</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Purpose of Acquisition
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="purposeAcquisition" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['purposeAcquisition'].invalid && (addAwardForm.controls['purposeAcquisition'].dirty || addAwardForm.controls['purposeAcquisition'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['purposeAcquisition'].errors.required">
+                            Purpose of Acquisition required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['purposeAcquisition'].errors.pattern">Invalid Purpose of
+                            Acquisition</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Nature of acquisition
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="natureAcquisition" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['natureAcquisition'].invalid && (addAwardForm.controls['natureAcquisition'].dirty || addAwardForm.controls['natureAcquisition'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['natureAcquisition'].errors.required">
+                            Nature of acquisition required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['natureAcquisition'].errors.pattern">Invalid Nature of
+                            acquisition</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">List of mouza covered
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="mouzaCovered" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['mouzaCovered'].invalid && (addAwardForm.controls['mouzaCovered'].dirty || addAwardForm.controls['mouzaCovered'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['mouzaCovered'].errors.required">
+                            List of mouza covered required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['mouzaCovered'].errors.pattern">Invalid List of mouza covered
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Total Award amount
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="awardAmount" value="" style="width:145%;" class="form-control"
+                        maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['awardAmount'].invalid && (addAwardForm.controls['awardAmount'].dirty || addAwardForm.controls['awardAmount'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['awardAmount'].errors.required">
+                            Total Award amount required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardAmount'].errors.pattern">Invalid Total Award amount
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Submitted date
+                </label>
+                <div class="col-md-5">
+                    <input formControlName="submittedDate" value="" style="width:145%;" class="form-control"
+                        class="form-control" maxlength="30" required autocomplete="off">
+                    <div *ngIf="addAwardForm.controls['submittedDate'].invalid && (addAwardForm.controls['submittedDate'].dirty || addAwardForm.controls['submittedDate'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addAwardForm.controls['submittedDate'].errors.required">
+                            Submitted date required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['submittedDate'].errors.pattern">Invalid Submitted date</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Select Award Template
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" style="width:145%;">
+                        <option value="">Select Template</option>
+                        <option value="0">Land compensation award</option>
+                        <option value="1">Crop compensation award</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">RoW type
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" style="width:145%;">
+                        <option value="">Select RoW</option>
+                        <option value="0">Common RoW-20%</option>
+                        <option value="1">New RoW-10%</option>
+                    </select>
+                </div>
+            </div> -->
+        </div>
+
+
+        <div class="col-md-5 card"
+            style="background-color:#f9f9f9;margin-top:20px;margin-bottom:60px;height:50%;padding:20px;">
+            <h3 style="font-size: 15px;">Comments</h3>
+            <ul style="line-height: 2;">
+                <li style="color:gray;">Submitted by CA,Mar 16,2020</li>
+                <li (click)="rejectCommentsModel(content3)"
+                    style="color:gray;text-decoration: underline;cursor: pointer;">
+                    Rejected by IOCL,Mar 18,2020</li>
+                <li (click)="approvalCommentsModel(content4)" style="color:gray;text-decoration: underline;cursor: pointer;">
+                    Approved by IOCL,Mar 20,2020</li>
+                <li (click)="paymentDetailsModel(content5)" style="color: gray;text-decoration: underline;cursor: pointer;">Fund of
+                    Rs. 5000000 released by IOCL</li>
+                <li (click)="fundDetailsModel(content6)" style="color: gray;text-decoration: underline;cursor: pointer;">Fund of
+                    Rs. 2500000 released by IOCL
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <br>
+            <div class="form-group row">
+
+                <div class="col-md-4">
+                    <button type="button" (click)="createModel(content7)" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Create Award</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" (click)="uploadModel(content8)" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Upload Award</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" (click)="cancel()" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<div class="table table-responsive" style="margin-top:20px;">
+    <table id="example" class="display table" style="width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;">
+        <thead>
+            <tr>
+                <!-- <th style="text-align: center;color: black;vertical-align: inherit;border-top:1px solid black;border-right: 1px solid #000000;">
+                    State
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    District
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Taluk
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Village
+                </th>-->
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Survey No
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Subdiv no
+                </th>
+                <th
+                    style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom:1px solid #000000">
+                    Hectare
+                </th>
+                <th
+                    style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom:1px solid #000000">
+                    Area in Are
+                </th>
+                <th
+                    style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom:1px solid #000000">
+                    Sq. Mt
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Total Area
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Land Type
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Land owner Name
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Rate/<br>Are
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Total Amount
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Compensation Amount
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Amount to paid
+                </th>
+                <!-- <th style="text-align: center;color: black;vertical-align: inherit;border:1px solid black;;">
+                    Cheque details
+                </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+            <tr style="background-color: white;">
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <!-- <td
+                    style="text-align: center;background-color:white;vertical-align: inherit;padding:0px;;border:1px solid black;;">
+                    <a (click)="myModal7.show()" style="cursor: pointer">View</a><br>
+                    <a (click)="myModal8.show()" style="cursor: pointer">Update</a>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+    <!-- <pagination-controls (pageChange)="p = $event" class="my-pagination" style="text-align: right">
+        </pagination-controls> -->
+</div>
+
+<br>
+
+<ng-template #content let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Approval Comments</h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="approveForm" (ngSubmit)="candidateAdd(approveForm.value)" class="form "
+            style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">SAP Reference Number
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <input autocomplete="off" type="text" class="form-control" formControlName="sap_referenceNo">
+
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Comments
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <textarea style="width: 265px; 
+            height: 100px;" formControlName="comments"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Approve</button>
+            </div>
+        </form>
+
+
+
+    </div>
+
+</ng-template>
+
+
+
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Comments Needed</h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="rejectForm" (ngSubmit)="candidateAdd(rejectForm.value)" class="form " style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Comments
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <textarea style="width: 265px; 
+            height: 100px;" formControlName="comments"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Reject</button>
+            </div>
+        </form>
+
+    </div>
+
+</ng-template>
+
+
+
+<ng-template #content2 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Update Fund Release</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="fundReleaseForm" (ngSubmit)="candidateAdd(fundReleaseForm.value)" class="form "
+            style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Payment Mode
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="paymentMode">
+                        <option value="">Select Type</option>
+                        <option value="0">Cheque</option>
+                        <option value="1">Online</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Payment Date
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" formControlName="paymentDate" [bsConfig]="datepickerConfig"
+                        bsDatepicker>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Released Amount
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <input autocomplete="off" type="text" class="form-control" formControlName="releaseAmount">
+
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">SAP Reference Number
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <input autocomplete="off" type="text" class="form-control" formControlName="sap_referenceNo">
+
+                </div>
+            </div>
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Update</button>
+            </div>
+        </form>
+
+
+
+    </div>
+
+</ng-template>
+
+
+
+
+<ng-template #content3 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Rejected Comments
+        </h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <!-- theme-form -->
+        <div class="form-group row ">
+            <label class="col-sm-4 col-form-label">Comments
+                <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+            </label>
+            <div class="col-sm-8">
+                <p style="margin-top: 7px">Rejected by IOCL Pipe
+                </p>
+            </div>
+        </div>
+        <div class="form-group row ">
+            <label class="col-sm-4 col-form-label">Comment By
+                <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+            </label>
+            <div class="col-sm-8">
+                <p style="margin-top: 7px">RamKumar
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-left: -15px;margin-right: -15px;">
+
+            <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+            <button type="submit" style="width: 125px;" (click)="create()"
+                class="btn btn-danger btn-rounded">OK</button>
+        </div>
+
+
+    </div>
+
+</ng-template>
+
+
+<ng-template #content4 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Approved Comments
+        </h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <!-- theme-form -->
+        <div class="form-group row ">
+            <label class="col-sm-4 col-form-label">Comments
+                <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+            </label>
+            <div class="col-sm-8">
+                <p style="margin-top: 7px">Approved by IOCL Pipe
+                </p>
+            </div>
+        </div>
+        <div class="form-group row ">
+            <label class="col-sm-4 col-form-label">SAP Ref No
+                <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+            </label>
+            <div class="col-sm-8">
+                <p style="margin-top: 7px">2344534
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-left: -15px;margin-right: -15px;">
+
+            <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+            <button type="submit" style="width: 125px;" (click)="create()"
+                class="btn btn-danger btn-rounded">OK</button>
+        </div>
+
+
+    </div>
+
+</ng-template>
+
+
+<ng-template #content5 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Payment Details
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="table table-responsive">
+            <table id="example" class="display table" style="width: 100%;">
+                <thead>
+                    <tr style="background-color: transparent;">
+                        <th>Payment Mode</th>
+                        <th>
+                            Payment Date
+
+                        </th>
+                        <th>
+                            Released Amount
+
+                        </th>
+                        <th>
+                            SAP Reference No
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Online</td>
+                        <td>02/02/2020</td>
+                        <td>5000000</td>
+                        <td>1233</td>
+                    </tr>
+                    <tr>
+                        <td>Cheque</td>
+                        <td>20/02/2020</td>
+                        <td>25000000</td>
+                        <td>5985</td>
+                    </tr>
+                    <tr>
+                        <td>Online</td>
+                        <td>29/02/2020</td>
+                        <td>30000000</td>
+                        <td>2398</td>
+                    </tr>
+                </tbody>
+            </table>
+          
+        </div>
+        <div class="modal-footer" style="margin-left: -15px;margin-right: -15px;">
+
+            <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+            <button type="submit" style="width: 125px;" (click)="create()"
+                class="btn btn-danger btn-rounded">OK</button>
+        </div>
+
+
+    </div>
+
+</ng-template>
+
+
+<ng-template #content6 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Payment Details
+        </h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="table table-responsive">
+            <table id="example" class="display table" style="width: 100%;">
+                <thead>
+                    <tr style="background-color: transparent;">
+                        <th>Payment Mode</th>
+                        <th>
+                            Payment Date
+
+                        </th>
+                        <th>
+                            Released Amount
+
+                        </th>
+                        <th>
+                            SAP Reference No
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Online</td>
+                        <td>02/02/2020</td>
+                        <td>5000000</td>
+                        <td>1233</td>
+                    </tr>
+                    <tr>
+                        <td>Cheque</td>
+                        <td>20/02/2020</td>
+                        <td>25000000</td>
+                        <td>5985</td>
+                    </tr>
+                    <tr>
+                        <td>Online</td>
+                        <td>29/02/2020</td>
+                        <td>30000000</td>
+                        <td>2398</td>
+                    </tr>
+                </tbody>
+            </table>
+          
+        </div>
+        <div class="modal-footer" style="margin-left: -15px;margin-right: -15px;">
+
+            <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+            <button type="submit" style="width: 125px;" (click)="create()"
+                class="btn btn-danger btn-rounded">OK</button>
+        </div>
+
+
+    </div>
+
+</ng-template>
+
+
+
+<ng-template #content7 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Create Award</h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="createForm" (ngSubmit)="candidateAdd(createForm.value)" class="form " style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">State
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="state">
+                        <option value="">
+                            <b>Select State</b></option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh </option>
+                        <option>Jharkhand </option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>TamilNadu</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">District
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="district">
+                        <option value="">
+                            <b>Select District</b></option>
+                        <option>Ariyalur</option>
+                        <option>Chennai</option>
+                        <option>Coimbatore</option>
+                        <option>Cuddalore</option>
+                        <option>Perambalur</option>
+                        <option>Pudukkottai</option>
+                        <option>Thanjavur</option>
+                        <option>Tiruchirappalli</option>
+                        <option>Tiruvarur </option>
+                        <option>Dharmapuri </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Taluk
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="taluk">
+                        <option value="">
+                            <b>Select Taluk</b></option>
+                        <option>Rajapalayam</option>
+                        <option>Chennai</option>
+                        <option>Srivilliputhur</option>
+                        <option>Velacherry</option>
+                        <option>Perumbakkam</option>
+                        <option>Sholinganallor</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Village
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="village">
+                        <option value="">
+                            <b>Select Village</b></option>
+                        <option>Kavanur</option>
+                        <option>Anandavadi</option>
+                        <option>Sennivanam</option>
+                        <option>Kodukkur</option>
+                        <option>Booluvampatti</option>
+                        <option>Navamalai</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload land data (SCH II)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+             
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market rate(Crops) (SCH III)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+             
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market rate(Trees/WOOD))(SCH IV)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+             
+                </div>
+            </div>
+
+
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Create</button>
+            </div>
+
+        </form>
+
+    </div>
+  
+</ng-template>
+
+
+
+
+<ng-template #content8 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Upload Award</h4>
+        <button type="button" class="close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="uploadForm" (ngSubmit)="candidateAdd(uploadForm.value)" class="form " style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">State
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="state">
+                        <option value="">
+                            <b>Select State</b></option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh </option>
+                        <option>Jharkhand </option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>TamilNadu</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">District
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="district">
+                        <option value="">
+                            <b>Select District</b></option>
+                        <option>Ariyalur</option>
+                        <option>Chennai</option>
+                        <option>Coimbatore</option>
+                        <option>Cuddalore</option>
+                        <option>Perambalur</option>
+                        <option>Pudukkottai</option>
+                        <option>Thanjavur</option>
+                        <option>Tiruchirappalli</option>
+                        <option>Tiruvarur </option>
+                        <option>Dharmapuri </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Taluk
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="taluk">
+                        <option value="">
+                            <b>Select Taluk</b></option>
+                        <option>Rajapalayam</option>
+                        <option>Chennai</option>
+                        <option>Srivilliputhur</option>
+                        <option>Velacherry</option>
+                        <option>Perumbakkam</option>
+                        <option>Sholinganallor</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Village
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="village">
+                        <option value="">
+                            <b>Select Village</b></option>
+                        <option>Kavanur</option>
+                        <option>Anandavadi</option>
+                        <option>Sennivanam</option>
+                        <option>Kodukkur</option>
+                        <option>Booluvampatti</option>
+                        <option>Navamalai</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload land data (SCH II)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market rate(Crops) (SCH III)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market rate(Trees/WOOD))(SCH IV)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload award (direct) (SCH VII)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Uplaod</button>
+            </div>
+
+        </form>
+
+    </div>
+    
+</ng-template>
+
+<!-- 
+
+<div bsModal #myModal8="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="height: 355px">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Fund Release</h4>
+                <button type="button" class="close" (click)="myModal8.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form class="form-horizontal" [formGroup]="paymentForm"><br>
+
+
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label" for="text-input">
+                    </label>
+                    <label class="col-md-4 col-form-label" for="text-input">Cheque Number
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label" for="text-input">
+                    </label>
+                    <label class="col-md-4 col-form-label" for="text-input">Cheque Date
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" [bsConfig]="datepickerConfig" bsDatepicker>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label" for="text-input">
+                    </label>
+                    <label class="col-md-4 col-form-label" for="text-input">Amount
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label" for="text-input">
+                    </label>
+                    <label class="col-md-4 col-form-label" for="text-input">Issued To
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+                    </div>
+                </div>
+
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="myModal8.hide()">Cancel</button>
+                <button type="submit" (click)="payment()" class="btn btn-danger btn-rounded">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+
+
+
+
+

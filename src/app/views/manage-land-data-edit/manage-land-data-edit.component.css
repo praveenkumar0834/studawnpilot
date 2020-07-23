@@ -1,0 +1,15 @@
+th{
+    background-color: transparent !important;
+}
+
+td{
+    background-color: transparent !important;
+}
+
+tr{
+    background-color: transparent !important;
+}
+.table td {
+   
+    border-top: 1px solid white !important;
+}

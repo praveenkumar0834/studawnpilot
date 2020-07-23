@@ -1,0 +1,96 @@
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+                <h1>Manage Crop Awards</h1>
+            
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="input-group col-md-3 mt-40">
+        <input type="text" 
+            class="form-control" placeholder="Name of Project">
+        <span class="input-group-append">
+            <button type="button" 
+                style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+    <div class="input-group col-md-3 mt-40">
+        <input type="text" 
+            class="form-control" placeholder="Award No">
+        <span class="input-group-append">
+            <button type="button" 
+                style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+    
+    <div class="col-md-2 mt-40">
+            <button type="submit" routerLink="/create-crop-awards"  class="blue-button">Add Award</button>
+
+    </div>                 
+</div>
+<hr>
+<div class="table table-responsive">
+<table id="example" class="display table" style="width: 100%;">
+    <thead>						
+        <tr>
+            <th>
+                Award number
+            </th>
+            <th>
+                Award date
+           </th>
+            <th>
+                Location of CA
+            </th>
+            <th>
+                CA Name 
+          </th>
+            <th>
+                Name of Project
+            </th>
+            <!-- <th>
+                SAP Reference No
+            </th>
+            <th>
+                Section
+            </th> -->
+            <th>
+                Total Award amount
+            </th>
+            <th>
+                Submitted date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of awardList">
+             <td>{{x.awardNumber}}</td>
+             <td>{{x.awardDate}}</td>
+             <td>{{x.locationOfCA}}</td>
+            <td>{{x.CAName}}</td>
+            <td>{{x.nameOfProject}}</td>
+            <!-- <td>{{x.sapNo}}</td>
+            <td>{{x.section}}</td> -->
+            <td>{{x.totalAwardAmount}}</td>
+            <td>{{x.submittedDate}}</td>
+            <td >{{x.Status}}</td>
+            <td style="cursor:pointer">
+                <p routerLink="/edit-crop-awards">Edit</p>
+            <a style="color: #000000">Download</a><br><br>
+            <a style="color: #000000" routerLink="/acquittance-crop">Acquittance</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!-- <pagination-controls (pageChange)="p = $event" class="my-pagination" style="text-align: right">
+</pagination-controls>  -->
+</div>
+

@@ -1,0 +1,76 @@
+<div class="form-group row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <h1>Check Book List</h1>
+
+        </div>
+    </div>
+
+    <div class="input-group col-md-5 mt-40">
+        <input  [(ngModel)]="searchtext" name="search"  id="search" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-append">
+            <button  (click)="chequeList(searchtext)" type="button" style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+
+
+    <div class="col-md-2 mt-40">
+        <button type="button" style="margin-left:93px;" routerLink="/cheque-book-add"
+            class="blue-button">Add</button>
+
+    </div>
+</div>
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th>
+                    CA Office
+                </th>
+                <th>
+                  Start cheque no
+                </th>
+               
+                <th>
+                    End cheque no
+                </th>
+              
+                <th>
+                    Cheque leafs
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr *ngFor="let a of chequelist"routerLink="/cheque-book-edit/{{a.chequeBookId}}">
+                <td> {{a.caOfficeName}}</td>
+                <td>{{a.startingChequeNumbers}}</td>
+                <td>{{a.endingChequeNumbers}}</td>
+
+                <td>{{a.chequeLeafs}}</td>
+                
+
+                <td style="cursor:pointer">
+                    <p>Edit</p>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <p-paginator [rows]="10" [totalRecords]="totalCount"  (onPageChange)="paginate($event)"  ></p-paginator>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  fullScreen="false"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

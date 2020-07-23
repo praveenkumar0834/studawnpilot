@@ -1,0 +1,786 @@
+<div class="form-group row">
+    <div class="col-md-8">
+        <div class="input-group">
+            <h1>Add Award(Land)</h1>
+        </div>
+    </div>
+</div>
+<hr>
+<form class="form-horizontal" [formGroup]="addAwardForm">
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Order of Compensation
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="compensation" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['compensation'].invalid && (addAwardForm.controls['compensation'].dirty || addAwardForm.controls['compensation'].touched)">
+                        <div *ngIf="addAwardForm.controls['compensation'].errors.required" style="color:red;">
+                            Compensation required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['compensation'].errors.pattern">Invalid compensationr</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <div class="form-group row">
+
+
+                <div class="col-md-4">
+                    <button type="button" (click)="createModel(content)" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Create Award</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" (click)="uploadModel(content1)"
+                        style="background-color: #000000;color:#ffffff" class="btn btn-block">Upload Award</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" (click)="cancel()" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Name of Project
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <!-- <input style="width:272px;" formControlName="projectName" value="" class="form-control"
+                        class="form-control" required autocomplete="off"> -->
+                    <select class="form-control" style="width:272px;">
+                        <option value="">Select Project </option>
+                        <option value="1">Paradip-Haldia-Durgapur</option>
+
+                        <option value="2">Chennai-Tiruvallur </option>
+                    </select>
+                    <div
+                        *ngIf="addAwardForm.controls['projectName'].invalid && (addAwardForm.controls['projectName'].dirty || addAwardForm.controls['projectName'].touched)">
+                        <div *ngIf="addAwardForm.controls['projectName'].errors.required" style="color:red;">
+                            ProjectName required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['projectName'].errors.pattern">Invalid ProjectName</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Section
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="section" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['section'].invalid && (addAwardForm.controls['section'].dirty || addAwardForm.controls['section'].touched)">
+                        <div *ngIf="addAwardForm.controls['section'].errors.required" style="color:red;">
+                            Section required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['section'].errors.pattern">Invalid Section</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">SAP Reference Number
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="sapNo" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['sapNo'].invalid && (addAwardForm.controls['sapNo'].dirty || addAwardForm.controls['sapNo'].touched)">
+                        <div *ngIf="addAwardForm.controls['sapNo'].errors.required" style="color:red;">
+                            SAP Ref No required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['sapNo'].errors.pattern">Invalid SAP Ref No</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">CA Name
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="caName" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['caName'].invalid && (addAwardForm.controls['caName'].dirty || addAwardForm.controls['caName'].touched)">
+                        <div *ngIf="addAwardForm.controls['caName'].errors.required" style="color:red;">
+                            CA Name required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['caName'].errors.pattern">Invalid CA Name</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Purpose of Acquisition
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="purposeAcquisition" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['purposeAcquisition'].invalid && (addAwardForm.controls['purposeAcquisition'].dirty || addAwardForm.controls['purposeAcquisition'].touched)">
+                        <div *ngIf="addAwardForm.controls['purposeAcquisition'].errors.required" style="color:red;">
+                            PurposeAcquisition required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['purposeAcquisition'].errors.pattern">Invalid
+                            PurposeAcquisition</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Nature of Acquisition
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="natureAcquisition" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['natureAcquisition'].invalid && (addAwardForm.controls['natureAcquisition'].dirty || addAwardForm.controls['natureAcquisition'].touched)">
+                        <div *ngIf="addAwardForm.controls['natureAcquisition'].errors.required" style="color:red;">
+                            Nature Acquisition required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['natureAcquisition'].errors.pattern">Invalid Nature
+                            Acquisition</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">List of Mouza Covered
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="mouzaCovered" value="" class="form-control"
+                        class="form-control" required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['mouzaCovered'].invalid && (addAwardForm.controls['mouzaCovered'].dirty || addAwardForm.controls['mouzaCovered'].touched)">
+                        <div *ngIf="addAwardForm.controls['mouzaCovered'].errors.required" style="color:red;">
+                            Mouza Covered required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['mouzaCovered'].errors.pattern">Invalid Mouza Covered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Total Award Amount
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" formControlName="awardAmount" value="" class="form-control"
+                        class="form-control"  required autocomplete="off">
+                    <div
+                        *ngIf="addAwardForm.controls['awardAmount'].invalid && (addAwardForm.controls['awardAmount'].dirty || addAwardForm.controls['awardAmount'].touched)">
+                        <div *ngIf="addAwardForm.controls['awardAmount'].errors.required" style="color:red;">
+                            Award Amount required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardAmount'].errors.pattern">Invalid Award Amount</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Submitted Date
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <input style="width:272px;" class="form-control" formControlName="submittedDate"
+                        [bsConfig]="datepickerConfig" bsDatepicker required>
+                    <div
+                        *ngIf="addAwardForm.controls['submittedDate'].invalid && (addAwardForm.controls['submittedDate'].dirty || addAwardForm.controls['submittedDate'].touched)">
+                        <div *ngIf="addAwardForm.controls['submittedDate'].errors.required" style="color:red;">
+                            Submitted Date required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['submittedDate'].errors.pattern">Invalid Submitted Date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Select Award Template
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <select class="form-control" style="width:272px;" formControlName="awardTemplate">
+                        <option value="">Select Template</option>
+                        <option value="0">Land compensation award</option>
+                        <option value="1">Crop compensation award</option>
+                    </select>
+                    <div
+                        *ngIf="addAwardForm.controls['awardTemplate'].invalid && (addAwardForm.controls['awardTemplate'].dirty || addAwardForm.controls['awardTemplate'].touched)">
+                        <div *ngIf="addAwardForm.controls['awardTemplate'].errors.required" style="color:red;">
+                            Award Template required.
+                        </div>
+                        <div *ngIf="addAwardForm.controls['awardTemplate'].errors.pattern">Invalid Award Template</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">Select 
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-5">
+                    <ng-multiselect-dropdown
+                    [placeholder]="'custom placeholder'"
+                    [data]="dropdownList"
+                    [(ngModel)]="selectedItems"
+                    [settings]="dropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                  >
+                  </ng-multiselect-dropdown>
+                    
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-md-6 ">
+            <br>
+            <div class="form-group row">
+
+                <!-- <div class="col-md-4">
+                    <button type="button" (click)="create()" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Create Award (Sch III)</button>
+                </div> -->
+
+                <div class="col-md-4">
+                    <button type="button" (click)="submit()" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Submit</button>
+                </div>
+
+                <div class="col-md-4">
+                    <button type="button" (click)="approve()" style="background-color: #000000;color:#ffffff"
+                        class="btn btn-block">Approve</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div formArrayName="credentials" class="table table-responsive" style="margin-top:20px;" *ngIf="isShown">
+        <table id="example" class="display table" style="width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;">
+            <thead>
+                <tr>
+                    <!-- <th
+                    style="text-align: center;color: black;vertical-align: inherit;border-top:1px solid black;border-right: 1px solid #000000;">
+                    State
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    District
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Taluk
+                </th> 
+                <th style="text-align: center;color: black;vertical-align: inherit;border:1px solid black;;">
+                    Village
+                </th>-->
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Survey No
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Subdiv no
+                    </th>
+                    <th
+                        style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom: 1px solid #000000;">
+                        Hectare
+                    </th>
+                    <th
+                        style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom: 1px solid #000000;">
+                        Are
+                    </th>
+                    <th
+                        style="text-align: center;color: black;vertical-align: inherit;border-top: 1px solid #000000;border-bottom: 1px solid #000000;">
+                        Sq. Mt
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Total Area in Are
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Land Type
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Land <br>Owner Name
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Rate/<br>Are
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Total Amount
+                    </th>
+                    <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                        Compensation <br>Amount
+                    </th>
+                    <th
+                        style="text-align: center;color: black;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                        Amount <br>to be<br> paid
+                    </th>
+                    <th style="border-bottom: 1px solid #fff;">
+                        <button type="button" (click)="addCreds()"
+                            style="text-align: center;color: #fff;background-color: #02164f;vertical-align: inherit;border: 1px solid #000000;">+</button>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let creds of addAwardForm.controls.credentials.controls; let i = index" [formGroupName]="i">
+
+
+                <tr style="background-color: white;">
+                    <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                        <b>State</b>
+                    </td>
+                    <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <input type="text" formControlName="state">
+                    </td>
+                    <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <b>District</b>
+                    </td>
+                    <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <input type="text" formControlName="district">
+                    </td>
+                    <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <b>Taluk</b>
+                    </td>
+                    <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <input type="text" formControlName="taluk">
+                    </td>
+                    <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <b>Village</b>
+                    </td>
+                    <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                        <input type="text" formControlName="village" style="margin-right:70px;">
+                    </td>
+                </tr>
+                <tr style="background-color: white;">
+                    <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">Village</option>
+                        <option value="0">Rajapalayam</option>
+                        <option value="1">Perumbakkam</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                    </select>
+                </td> -->
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="surveyNo" style="text-align: inherit;width: 61px;height:35px;"
+                            type="text" class="form-control1">
+                    </td>
+
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="subdivNo" style="text-align: inherit;width: 61px;height:35px;"
+                            type="text" class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="hectare" style="text-align: inherit;width: 67px;height:35px;"
+                            type="text" class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="are" style="text-align: inherit;width: 72px;height:35px;" type="text"
+                            class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="sqmt" style="text-align: inherit;width: 61px;height:35px;" type="text"
+                            class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="toatlArea" style="text-align: inherit;width: 61px;height:35px;"
+                            type="text" class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <select formControlName="landType" class="form-control1" style="width: 61px;height:35px;">
+                            <option value="">
+                                <b>Type</b></option>
+                            <option>Dry</option>
+                            <option>Wet</option>
+
+                        </select>
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="landOwnerName" style="text-align: inherit;width: 89px;height:35px;"
+                            type="text" class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="rate" style="text-align: inherit;width: 52px;height:35px;"
+                            class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="totalamount" style="text-align: inherit;width: 66px;height:35px;"
+                            class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                        <input formControlName="compensation" style="text-align: inherit;width: 75px;height:35px;"
+                            class="form-control1">
+                    </td>
+                    <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                        <input formControlName="talamountuk" style="text-align: inherit;width: 75px;height:35px;"
+                            class="form-control1">
+                    </td>
+                    <td
+                        style="text-align: center;padding:0px;vertical-align: inherit;border-top: none;border-bottom: #fff;">
+
+                        <button type="button" (click)="remove(i)"
+                            style="text-align: center;color: #fff;background-color: #02164f;vertical-align: inherit;border: 1px solid #000000;">-</button>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<ng-template #content let-modal style="width: 80px;">
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Create Award</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="createForm" (ngSubmit)="candidateAdd(createForm.value)" class="form " style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">State
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="state">
+                        <option value="">
+                            <b>Select State</b></option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh </option>
+                        <option>Jharkhand </option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>TamilNadu</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">District
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="district">
+                        <option value="">
+                            <b>Select District</b></option>
+                        <option>Ariyalur</option>
+                        <option>Chennai</option>
+                        <option>Coimbatore</option>
+                        <option>Cuddalore</option>
+                        <option>Perambalur</option>
+                        <option>Pudukkottai</option>
+                        <option>Thanjavur</option>
+                        <option>Tiruchirappalli</option>
+                        <option>Tiruvarur </option>
+                        <option>Dharmapuri </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Taluk
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="taluk">
+                        <option value="">
+                            <b>Select Taluk</b></option>
+                        <option>Rajapalayam</option>
+                        <option>Chennai</option>
+                        <option>Srivilliputhur</option>
+                        <option>Velacherry</option>
+                        <option>Perumbakkam</option>
+                        <option>Sholinganallor</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Village
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <!-- <select class="form-control" formControlName="village">
+                        <option value="">
+                            <b>Select Village</b></option>
+                        <option>Kavanur</option>
+                        <option>Anandavadi</option>
+                        <option>Sennivanam</option>
+                        <option>Kodukkur</option>
+                        <option>Booluvampatti</option>
+                        <option>Navamalai</option>
+
+                    </select> -->
+                    <ng-multiselect-dropdown [placeholder]="'Select Village'" [data]="dropdownList" formControlName="village"
+                        [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                    <!-- <i class="fa fa-angle-down" style="font-size:24px"></i> -->
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market Rate (Sch I)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Create</button>
+            </div>
+
+        </form>
+
+
+
+        <!-- (click)="modal.close('Close click')" -->
+
+    </div>
+    <!-- <div class="modal-footer">
+                            
+                            </div> -->
+</ng-template>
+
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header" style="padding: 2% 3%;">
+        <h4 class="modal-title">Upload Award</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="uploadForm" (ngSubmit)="candidateAdd(uploadForm.value)" class="form " style="padding:2% 4%">
+            <!-- theme-form -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">State
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="state">
+                        <option value="">
+                            <b>Select State</b></option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh </option>
+                        <option>Jharkhand </option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>TamilNadu</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">District
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="district">
+                        <option value="">
+                            <b>Select District</b></option>
+                        <option>Ariyalur</option>
+                        <option>Chennai</option>
+                        <option>Coimbatore</option>
+                        <option>Cuddalore</option>
+                        <option>Perambalur</option>
+                        <option>Pudukkottai</option>
+                        <option>Thanjavur</option>
+                        <option>Tiruchirappalli</option>
+                        <option>Tiruvarur </option>
+                        <option>Dharmapuri </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Taluk
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="taluk">
+                        <option value="">
+                            <b>Select Taluk</b></option>
+                        <option>Rajapalayam</option>
+                        <option>Chennai</option>
+                        <option>Srivilliputhur</option>
+                        <option>Velacherry</option>
+                        <option>Perumbakkam</option>
+                        <option>Sholinganallor</option>
+                        <option>Karapakkam</option>
+                        <option>Thuraipakkam</option>
+                        <option>Adayar </option>
+                        <option>Sankarankovil </option>
+                        <option>Erode</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Village
+                    <span Style="color:red; margin-left:5px;">*</span>
+                </label>
+                <div class="col-sm-8">
+                    <select class="form-control" formControlName="village">
+                        <option value="">
+                            <b>Select Village</b></option>
+                        <option>Kavanur</option>
+                        <option>Anandavadi</option>
+                        <option>Sennivanam</option>
+                        <option>Kodukkur</option>
+                        <option>Booluvampatti</option>
+                        <option>Navamalai</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Market Rate (Sch I)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+
+            <!-- <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Land Data(Sch II)
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div> -->
+            <div class="form-group row ">
+                <label class="col-sm-4 col-form-label">Upload Award(direct) (Sch III)
+                    <!-- <span Style="color:red; margin-left:5px;">*</span> -->
+                </label>
+                <div class="col-sm-8">
+                    <input type="file" #file multiple (change)="myUploader($event)" class="form-control" required>
+
+
+                </div>
+            </div>
+
+
+            <div class="modal-footer" style="margin-left: -30px;margin-right: -30px;">
+
+                <button type="button" style="width: 125px;" class="btn btn-secondary">Cancel</button>
+                <button type="submit" style="width: 125px;" (click)="create()"
+                    class="btn btn-danger btn-rounded">Uplaod</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</ng-template>

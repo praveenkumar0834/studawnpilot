@@ -1,0 +1,119 @@
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+            <h1>Manage land data list</h1>
+
+        </div>
+    </div>
+    <div class="input-group col-md-5 mt-40">
+        <input [(ngModel)]="searchtext" name="search" id="search" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-append">
+            <button (click)="list(searchtext)" type="button" style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+
+
+    <div class="col-md-3 mt-40">
+        <button type="button" routerLink="/manage-land-data-add" style="width: 65%;" class="blue-button">Upload Land
+            Data</button>
+
+    </div>
+</div>
+<form name="form" #f="ngForm" novalidate>
+    <div class="form-group row">
+
+        <div class="col-md-2">
+            <select name="stateId" #stateId="ngModel" (change)="districtListbasedStateId(villageaddDtls.stateId)" required
+                [(ngModel)]="villageaddDtls.stateId" class="form-control">
+                <option value="0" disabled selected>Select State</option>
+                <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+            </select>
+           
+        </div>
+
+        <div class="col-md-2">
+            <select name="districtId" #districtId="ngModel" required
+                (change)="talukListbasedDistrictId(villageaddDtls.districtId)" [(ngModel)]="villageaddDtls.districtId"
+                class="form-control">
+                <option value="0" disabled selected>Select District</option>
+                <option *ngFor="let x of districtlist" value={{x.districtId}}>{{x.districtName}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select name="talukId" #talukId="ngModel" required (change)="villageListbasedTalukId(villageaddDtls.talukId)"
+                [(ngModel)]="villageaddDtls.talukId" class="form-control">
+                <option value="0" disabled selected>Select Taluk</option>
+                <option *ngFor="let x of taluklist" value={{x.talukId}}>{{x.talukName}}</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="villageId" #villageId="ngModel" required [(ngModel)]="villageaddDtls.villageId"
+                class="form-control">
+                <option value="0" disabled selected>Select Village</option>
+                <option *ngFor="let x of villageList" value={{x.villageId}}>{{x.villageName}}</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-2">
+            <button type="submit" (click)="list(searchtext)" style="background-color: #000000;color:#ffffff"
+                class="btn btn-block">View</button>
+        </div>
+
+
+    </div>
+</form>
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>
+                    6(1) So no./ Date
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    District
+                </th>
+                <th>
+                    Taluk/ Mandal
+                </th>
+                <th>
+                    Village
+                </th>
+                <th>
+                    RoW Type
+                </th>
+                <th>
+                    Section
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of landDataList" routerLink="/manage-land-data-edit/{{x.landGazetteId}}">
+                <td>{{x.soNumberDate}}</td>
+                <td>{{x.stateName}}</td>
+                <td>{{x.districtName}}</td>
+                <td>{{x.talukName}}</td>
+                <td>{{x.villageName}}</td>
+                <td>{{x.rowName}}</td>
+                <td>{{x.sectionName}}</td>
+                <td>Edit</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    <p-paginator [rows]="10" [totalRecords]="totalCount" (onPageChange)="paginate($event)"></p-paginator>
+
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

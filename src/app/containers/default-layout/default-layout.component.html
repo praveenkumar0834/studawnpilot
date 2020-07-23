@@ -1,0 +1,67 @@
+<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/images/indian.jpg', width: 200, height: 55}"
+  [navbarBrandMinimized]="{src: 'assets/img/images/indian.jpg', width: 175, height: 63}" [sidebarToggler]="'lg'"
+  [asideMenuToggler]="false">
+  <p style="text-align: left;color: white;    margin-left: 15px;
+  font-weight: 700;
+  font-size: 15px;">Pipelines Division</p>
+
+  <ul class="nav navbar-nav ml-auto">
+
+    <li class="dropdown">
+      <a  data-toggle="dropdown">
+    
+      </a>
+ 
+  </li>
+
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span class="user-name" style="font-weight:500">IOCL
+            <i class="fa fa-angle-down"></i>
+        </span>
+        <!-- <span class="user-name" style="font-weight:500">{{name}}
+            <i class="fa fa-angle-down"></i>
+        </span> -->
+        <img src="assets/img/images/avatar1.png" style="margin: -10px 15px -12px 1px;" class="img-avatar" alt="admin@bootstrapmaster.com" />
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+
+        <a class="dropdown-item" routerLink="/changepassword" style="cursor:pointer"><i class="fa fa-user"></i>
+          Profile</a>
+        <a class="dropdown-item" (click)="logout()" style="cursor:pointer"><i class="fa fa-lock"></i> Logout</a>
+
+      </div>
+    </li>
+  </ul>
+</app-header> 
+
+<div class="app-body">
+  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized"
+    (minimizedChange)="toggleMinimize($event)">
+    <app-sidebar-nav  [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
+    
+  </app-sidebar>
+  <div class="sidebar">
+    <nav class="sidebar-nav">
+      <ul *ngFor="let a of loginusrDetails.menuList" class="nav">
+        <li class="nav-item">
+          <div class="nav-link" routerLink="/{{a.menuPath}}">
+            {{a.menuName}}
+          </div>
+        </li>
+        
+      </ul>
+    </nav>
+    
+
+    <!-- <button class="sidebar-minimizer brand-minimizer" type="button"></button> -->
+  </div>
+  <main class="main"> 
+  
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

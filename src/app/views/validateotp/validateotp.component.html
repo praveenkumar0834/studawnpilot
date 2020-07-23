@@ -1,0 +1,26 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mx-auto">  
+                <div class="card-body" style="margin-top: 133px">  
+                  <form [formGroup]="validateForm" (ngSubmit)="validate(validateForm.value)">
+                    <div class="logo-name text-lg text-center mb-30">
+                        <img src="assets/img/images/litaski.png" style="width:250px;" class=" img-responsive center" alt="gfd">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                      </div>
+                      <input type="text" formControlName="otp" class="form-control" placeholder="OTP"  required (keypress)="numberOnly($event)">
+                    </div>
+                    <button type="submit" [disabled]="!validateForm.valid" style="background-color:#ec5353 " class="btn btn-danger btn-block">SUBMIT</button>
+                    <button type="button" (click)="back()" style="background-color:#ffffff;color:black;border-color: lightslategray " class="btn btn-danger btn-block">BACK</button>
+                </form>
+                </div>
+                <p class="text-center m-t-xs text-sm">2020 &copy; Litaski.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  

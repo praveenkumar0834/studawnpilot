@@ -1,0 +1,24 @@
+/* .mt-20{
+    margin-top:20px;
+} */
+
+th{
+    background-color: transparent !important;
+}
+
+td{
+    background-color: transparent !important; 
+}
+
+tr{
+    background-color: transparent !important;
+}
+
+.table tbody + tbody {
+    border-top: none !important
+}
+
+.modal-content{
+    margin-left: 40px;
+    width: 80%;
+}

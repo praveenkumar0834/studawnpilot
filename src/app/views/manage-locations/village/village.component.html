@@ -1,0 +1,473 @@
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+            <h1>Location List</h1>
+
+        </div>
+    </div>
+    <div class="input-group col-md-6 mt-40">
+        <input [(ngModel)]="searchtext" name="search" id="search" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-append">
+            <button (click)="list(searchtext)" type="button" style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+
+
+</div>
+<div class="form-group row">
+    <div class="col-md-2 "></div>
+
+    <div class="col-md-2 ">
+        <button type="submit" class="blue-button" (click)="showDialogDistrict('add')">Add District</button>
+    </div>
+    <div class="col-md-2 ">
+        <button type="submit" class="blue-button" (click)="showDialogTaluk('add')">Add Taluk</button>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="blue-button" (click)="showDialogVillage('add')">Add Village</button>
+    </div>
+    <div class="col-md-2 ">
+        <button type="submit" class="blue-button" (click)="showDialogUpload()">Upload</button>
+    </div>
+</div>
+
+
+
+
+<hr>
+<div class="table">
+    <table id="example" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th style="vertical-align:inherit;text-align: center;">
+                    State
+                </th>
+                <th style="vertical-align:inherit ;text-align: center;">
+                    District
+
+                </th>
+                <th style="vertical-align:inherit;text-align: center;">
+                    Taluk
+
+                </th>
+                <th style="vertical-align:inherit;text-align: center;">
+                    Village
+
+                </th>
+                <!-- <th>
+                    Action
+
+                </th> -->
+
+            </tr>
+        </thead>
+        <tbody>
+          
+            <tr *ngFor="let a of locationList">
+                <td style="vertical-align:inherit;text-align: center;">{{a.stateName}}</td>
+                <td style="vertical-align:inherit ;text-align: center;">
+                    <span><a style="color: #0073B1;"><i class="fa fa-pencil fa-fw "
+                                (click)="showDialogDistrict('edit', a)" style="font-size: 16px;color:#0073B1"
+                                aria-hidden="false"></i></a></span>
+                    <span>{{a.districtName}}</span>
+                </td>
+                <td style="vertical-align:inherit;text-align: center;">
+                    <span><a style="color: #0073B1;"><i class="fa fa-pencil fa-fw "  (click)="showDialogTaluk('edit',a)"
+                                style="font-size: 16px;color:#0073B1" aria-hidden="false"></i></a></span>
+                    <span>{{a.talukName}}</span>
+                </td>
+                <td style="vertical-align:inherit;text-align: center;">
+                    <span><a style="color: #0073B1;"><i class="fa fa-pencil fa-fw " (click)="showDialogVillage('edit',a)"
+                                style="font-size: 16px;color:#0073B1" aria-hidden="false"></i></a></span>
+                    <span>{{a.villageName}}</span>
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+    <p-paginator [rows]="10" [totalRecords]="totalCount" (onPageChange)="paginate($event)"></p-paginator>
+
+    <p-dialog [(visible)]="Upload" [style]="{width: '50vw'}">
+        <p-tabView>
+            <p-tabPanel header="Upload Taluk">
+                <form name="form" #talukfileForm="ngForm" novalidate>
+                    <div class="row mt-20 ml-0 mr-0">
+                        <div class="col-md-6" style="margin: 0px auto;">
+        
+                            <label class="col-md-12 col-form-label" for="text-input">State
+        
+                            </label>
+                            <div class="col-md-12">
+  
+                                <select name="stateId" #stateId="ngModel"  (change)="districtListbasedStateId(talukaddDtls.stateId)"  [(ngModel)]="talukaddDtls.stateId"
+                                    class="form-control">
+                                    <option value="" disabled selected>Select State</option>
+                                    <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                                </select>
+                                <!-- <div *ngIf="talukfileForm.submitted && stateId.invalid">
+                                    <div *ngIf="stateId.errors.required" class="text-danger text-left">State is required</div>
+                                </div> -->
+        
+                            </div>
+        
+                   
+                            <label class="col-md-12 col-form-label" for="text-input">District
+        
+                            </label>      
+                            <div class="col-md-12">
+    <!-- {{districtlist|json}}                                -->
+                                <select name="districtId" #districtId="ngModel"     [(ngModel)]="talukaddDtls.districtId"
+                                class="form-control">
+                                <option value="" disabled selected>Select District</option>
+                                <option *ngFor="let x of districtlist" value={{x.districtId}}>{{x.districtName}}</option>
+                            </select>
+                            </div>
+        
+                            <label class="col-md-12 col-form-label" for="text-input">Taluk
+                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-md-12">
+        
+                               
+                                <div class="custom-file"> 
+                                    <input type="file" #file [(ngModel)]='uploadfile'   name='uploadfile'>
+                                    <!-- <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+                               <!-- <div *ngIf="talukfileForm.submitted && file.invalid">
+                                    <div *ngIf="file.errors.required" class="text-danger text-left">File is required</div>
+                                </div> -->
+                                </div>
+        
+                            </div>
+                            <div class="row mt-4 mb-4">
+                                <div class="col-md-6" >
+                                    <button (click)="readUrl(talukfileForm.form.valid)"  type="submit" class="blue-button">
+                                        Upload
+                                    </button>
+                                </div>
+                              
+                                <div class="col-md-6">
+                                    <button type="button" (click)="Upload=false" class="cancel-button">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+        
+                               
+                          
+        
+        
+        
+                        </div>
+                    </div>
+                </form>
+                
+            </p-tabPanel>
+            <p-tabPanel header="Upload Village" >
+                <form name="form" #villagefileForm="ngForm" novalidate>
+                    <div class="row mt-20 ml-0 mr-0">
+                        <div class="col-md-6" style="margin: 0px auto;">
+            
+                            <label class="col-md-12 col-form-label" for="text-input">State
+                                <!-- <span style="color: red">*</span> -->
+                            </label>
+                            <div class="col-md-12">
+            
+                                <select name="stateId" #stateId="ngModel" (change)="districtListbasedStateId(villageaddDtls.stateId)"  [(ngModel)]="villageaddDtls.stateId"
+                                class="form-control">
+                                <option value="" disabled selected>Select State</option>
+                                <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                            </select>
+                                
+            
+                            </div>
+            
+            
+                            <label class="col-md-12 col-form-label" for="text-input">District
+                                <!-- <span style="color: red">*</span> -->
+                            </label>
+                            <div class="col-md-12">
+            
+                               
+                                <select name="districtId" #districtId="ngModel"  (change)="talukListbasedDistrictId(villageaddDtls.districtId)"   [(ngModel)]="villageaddDtls.districtId"
+                                class="form-control">
+                                <option value="" disabled selected>Select District</option>
+                                <option *ngFor="let x of districtlist" value={{x.districtId}}>{{x.districtName}}</option>
+                            </select>
+                            </div>
+            
+                            <label class="col-md-12 col-form-label" for="text-input">Taluk
+                                <!-- <span style="color: red">*</span> -->
+                            </label>
+                            <div class="col-md-12">
+            
+                               
+                                <select name="talukId" #talukId="ngModel"   [(ngModel)]="villageaddDtls.talukId"
+                                class="form-control">
+                                <option value="" disabled selected>Select Taluk</option>
+                                <option *ngFor="let x of taluklist" value={{x.talukId}}>{{x.talukName}}</option>
+                            </select>
+            
+                            </div>
+                            <label class="col-md-12 col-form-label" for="text-input">Village
+                                <span style="color: red">*</span>
+                            </label>
+                            <div class="col-md-12">
+            
+                                <div class="custom-file"> 
+                                    <input type="file" #villageFile [(ngModel)]='uploadfile'   name='uploadfile'>
+                                    <!-- <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+                               <!-- <div *ngIf="villagefileForm.submitted && file.invalid">
+                                    <div *ngIf="file.errors.required" class="text-danger text-left">File is required</div>
+                                </div> -->
+                                </div>
+                                
+            
+                            </div>
+                            <div class="row mt-4 mb-4">
+                                <div class="col-md-6"  >
+                                    <button (click)="talukreadUrl()" type="submit" class="blue-button">
+                                        Upload
+                                    </button>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <button (click)="Upload=false" type="button"  class="cancel-button">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+            
+                               
+                          
+            
+            
+            
+                        </div>
+                    </div>
+                </form>
+            
+            
+            </p-tabPanel>
+            
+        </p-tabView>
+       
+    </p-dialog>
+        
+    <p-dialog [(visible)]="District" [style]="{width: '50vw'}">
+        <p-header>
+            {{pageTitle}}
+
+        </p-header>
+        <form name="form" #f="ngForm" novalidate>
+            <div class="row mt-20 ml-0 mr-0">
+                <div class="col-md-6" style="margin: 0px auto;">
+
+                    <label class="col-md-12 col-form-label" for="text-input">State
+                        <span style="color: red">*</span>
+                    </label>
+                    <div class="col-md-12">
+
+                        <select name="stateId" #stateId="ngModel"  required [(ngModel)]="districtaddDtls.stateId"
+                            class="form-control">
+                            <option value="" disabled >Select State</option>
+                            <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                        </select>
+                        <div *ngIf="f.submitted && stateId.invalid">
+                            <div *ngIf="stateId.errors.required" class="text-danger text-left">State is required</div>
+                        </div>
+
+                    </div>
+
+
+                    <label class="col-md-12 col-form-label" for="text-input">District
+                        <span style="color: red">*</span>
+                    </label>
+                    <div class="col-md-12">
+
+                        <input placeholder="Enter District" name="districtName" #districtName="ngModel" required [(ngModel)]="districtaddDtls.districtName" class="form-control" class="form-control" maxlength="30"  autocomplete="off">
+                        <div *ngIf="f.submitted && districtName.invalid">
+                            <div *ngIf="districtName.errors.required" class="text-danger text-left">District is required</div>
+                        </div>
+                    </div>
+                  
+                    <div class="row mt-4 mb-4">
+                        <div class="col-md-6"  *ngIf="addbtnFlag">
+                            <button (click)="districtAdd(f.form.valid)" type="submit" class="blue-button">
+                                Add
+                            </button>
+                        </div>
+                        <div class="col-md-6"  *ngIf="!addbtnFlag">
+                            <button (click)="districtEdit(districtaddDtls.districtId,f.form.valid)" type="submit" class="blue-button">
+                                Update
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" (click)="District=false" class="cancel-button">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                       
+                  
+
+
+
+                </div>
+            </div>
+        </form>
+
+
+
+    </p-dialog> <p-dialog [(visible)]="Taluk" [style]="{width: '50vw'}">
+        <p-header>
+            {{pageTitle}}
+
+        </p-header>
+        <form name="form" #talukForm="ngForm" novalidate>
+            <div class="row mt-20 ml-0 mr-0">
+                <div class="col-md-6" style="margin: 0px auto;">
+
+                    <label class="col-md-12 col-form-label" for="text-input">State
+                        <span style="color: red">*</span>
+                    </label>
+                    <div class="col-md-12">
+                        <!-- {{ stateList |  json}} -->
+                        <select name="stateId" #stateId="ngModel" required (change)="districtListbasedStateId(talukaddDtls.stateId)"  [(ngModel)]="talukaddDtls.stateId"
+                            class="form-control">
+                           
+                            <option value="" disabled selected>Select State</option>
+                            <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                        </select>
+                        <div *ngIf="talukForm.submitted && stateId.invalid">
+                            <div *ngIf="stateId.errors.required" class="text-danger text-left">State is required</div>
+                        </div>
+
+                    </div>
+                    <label class="col-md-12 col-form-label" for="text-input">District
+                        <span style="color: red">*</span>
+                    </label>
+                    <div class="col-md-12">    
+           <!-- {{talukaddDtls.districtName}} -->
+                   <select name="districtId" #districtId="ngModel"  required    [(ngModel)]="talukaddDtls.districtId"
+                   class="form-control">
+                   <option value="" disabled selected>Select District</option>
+                   <option *ngFor="let x of districtlist" value={{x.districtId}}>{{x.districtName}}</option>
+               </select>
+               <div *ngIf="talukForm.submitted && districtId.invalid">
+                <div *ngIf="districtId.errors.required" class="text-danger text-left">District is required</div>
+            </div>
+                    </div>
+                    <label class="col-md-12 col-form-label" for="text-input">Taluk
+                        <span style="color: red">*</span>
+                    </label>
+                    <div class="col-md-12">
+                        <input name="talukName" #talukName="ngModel" required  [(ngModel)]="talukaddDtls.talukName"  placeholder="Enter Taluk " class="form-control" class="form-control" maxlength="30"  autocomplete="off">
+                    </div>
+                    <div *ngIf="talukForm.submitted && talukName.invalid">
+                        <div *ngIf="talukName.errors.required" class="text-danger text-left">Taluk is required</div>
+                    </div>
+                    <div class="row mt-4 mb-4">
+                        <div class="col-md-6"  *ngIf="addbtnFlag"> 
+                            <button (click)="talukAdd(talukForm.form.valid)" type="submit" class="blue-button">
+                                Add
+                            </button>
+                        </div>
+                        <div class="col-md-6"  *ngIf="!addbtnFlag">
+                            <button (click)="talukEdit(talukaddDtls.talukId,talukForm.form.valid)" type="submit" class="blue-button">
+                                Update
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" (click)="Taluk=false" class="cancel-button">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p-dialog>
+ <p-dialog [(visible)]="Village" [style]="{width: '50vw'}">
+    <p-header>
+        {{pageTitle}}
+    </p-header>
+    <form name="form" #villageForm="ngForm" novalidate>
+        <div class="row mt-20 ml-0 mr-0">
+            <div class="col-md-6" style="margin: 0px auto;">
+               <label class="col-md-12 col-form-label" for="text-input">State
+                <span style="color: red">*</span>    
+            </label>
+                <div class="col-md-12">
+                    <select name="stateId" #stateId="ngModel" (change)="districtListbasedStateId(villageaddDtls.stateId)" required [(ngModel)]="villageaddDtls.stateId"
+                        class="form-control">
+                        <option value="" disabled selected>Select State</option>
+                        <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                    </select>
+                    <div *ngIf="villageForm.submitted && stateId.invalid">
+                        <div *ngIf="stateId.errors.required" class="text-danger text-left">State is required</div>
+                    </div>
+               </div>
+                <label class="col-md-12 col-form-label" for="text-input">District
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-12">
+                    <select name="districtId" #districtId="ngModel" (change)="talukListbasedDistrictId(villageaddDtls.districtId)" required [(ngModel)]="villageaddDtls.districtId"
+                   class="form-control">
+                   <option value="" disabled selected>Select District</option>
+                   <option *ngFor="let x of districtlist" value={{x.districtId}}>{{x.districtName}}</option>
+               </select>
+               <div *ngIf="villageForm.submitted && districtId.invalid">
+                <div *ngIf="districtId.errors.required" class="text-danger text-left">District is required</div>
+            </div>
+                </div>
+                <label class="col-md-12 col-form-label" for="text-input">Taluk
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-12">
+                    <select name="talukId" #talukId="ngModel"  required [(ngModel)]="villageaddDtls.talukId"
+                    class="form-control">
+                    <option value="" disabled selected>Select Taluk</option>
+                    <option *ngFor="let x of taluklist" value={{x.talukId}}>{{x.talukName}}</option>
+                </select>
+                <div *ngIf="villageForm.submitted && talukId.invalid">
+                    <div *ngIf="talukId.errors.required" class="text-danger text-left">Taluk is required</div>
+                </div>
+                </div>
+                <label class="col-md-12 col-form-label" for="text-input">Village
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-12">
+                    <input name="villageName" placeholder="Enter Village"  #villageName="ngModel"  required [(ngModel)]="villageaddDtls.villageName"  class="form-control" class="form-control" maxlength="30" required autocomplete="off">
+               </div>
+               <div *ngIf="villageForm.submitted && villageName.invalid">
+                <div *ngIf="villageName.errors.required" class="text-danger text-left">Village is required</div>
+            </div>
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-6"  *ngIf="addbtnFlag">
+                        <button  (click)="villageAdd(villageForm.form.valid)"  type="submit" class="blue-button">
+                            Add
+                        </button>
+                    </div>
+                    <div class="col-md-6"  *ngIf="!addbtnFlag">
+                        <button (click)="villageEdit(villageaddDtls.villageId,villageForm.form.valid)"   type="submit" class="blue-button">
+                            Update
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" (click)="Village=false" class="cancel-button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </form>
+</p-dialog>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat" fullScreen="false">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

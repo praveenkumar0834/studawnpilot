@@ -1,0 +1,161 @@
+<div class="form-group row">
+    <div class="col-md-5">
+        <div class="input-group">
+                <h1>List of pending awards</h1>
+            
+        </div>
+    </div>
+    
+    
+                    
+</div>
+<div class="form-group row">
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="state">
+            <option value="">
+                <b>Select State</b></option>
+            <option>Andhra Pradesh</option>
+            <option>Arunachal Pradesh</option>
+            <option>Assam</option>
+            <option>Bihar</option>
+            <option>Chhattisgarh</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana</option>
+            <option>Himachal Pradesh </option>
+            <option>Jharkhand </option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>TamilNadu</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="district">
+            <option value="">
+                <b>Select District</b></option>
+            <option>Ariyalur</option>
+            <option>Chennai</option>
+            <option>Coimbatore</option>
+            <option>Cuddalore</option>
+            <option>Perambalur</option>
+            <option>Pudukkottai</option>
+            <option>Thanjavur</option>
+            <option>Tiruchirappalli</option>
+            <option>Tiruvarur </option>
+            <option>Dharmapuri </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="taluk">
+            <option value="">
+                <b>Select Taluk</b></option>
+            <option>Rajapalayam</option>
+            <option>Chennai</option>
+            <option>Srivilliputhur</option>
+            <option>Velacherry</option>
+            <option>Perumbakkam</option>
+            <option>Sholinganallor</option>
+            <option>Karapakkam</option>
+            <option>Thuraipakkam</option>
+            <option>Adayar </option>
+            <option>Sankarankovil </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" formControlName="village">
+            <option value="">
+                <b>Select Village</b></option>
+            <option>Kavanur</option>
+            <option>Anandavadi</option>
+            <option>Sennivanam</option>
+            <option>Kodukkur</option>
+            <option>Booluvampatti</option>
+            <option>Navamalai</option>
+
+        </select>
+    </div>
+
+
+    <div class="col-md-2">
+        <button type="button" (click)="view()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">View</button>
+    </div>
+
+    <div class="col-md-2">
+        <button type="button" (click)="export()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">Export</button>
+    </div>
+ 
+
+</div>
+<hr>
+<div class="table table-responsive">
+<table id="example" class="display table" style="width: 100%;">
+    <thead>						
+        <tr>
+            <th>
+                Award number
+            </th>
+            <th>
+                Award date
+           </th>
+            <th>
+                Location of CA
+            </th>
+            <th>
+                CA Name 
+          </th>
+            <th>
+                Name of Project
+            </th>
+            <!-- <th>
+                SAP Reference No
+            </th>
+            <th>
+                Section
+            </th> -->
+            <th>
+                Total Award amount
+            </th>
+            <th>
+                Submitted date
+            </th>
+            <th>
+                Status
+            </th>
+            <!-- <th>
+                Action
+            </th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of awardList">
+             <td>{{x.awardNumber}}</td>
+             <td>{{x.awardDate}}</td>
+             <td>{{x.locationOfCA}}</td>
+            <td>{{x.CAName}}</td>
+            <td>{{x.nameOfProject}}</td>
+            <!-- <td>{{x.sapNo}}</td>
+            <td>{{x.section}}</td> -->
+            <td>{{x.totalAwardAmount}}</td>
+            <td>{{x.submittedDate}}</td>
+            <td >{{x.Status}}</td>
+            <!-- <td style="cursor:pointer">
+                <p>Edit</p>
+            <a style="color: #000000">Download</a><br><br>
+            <a style="color: #000000" routerLink="/acquittance">Acquittance</a>
+
+            </td> -->
+        </tr>
+    </tbody>
+</table>
+<!-- <pagination-controls (pageChange)="p = $event" class="my-pagination" style="text-align: right">
+</pagination-controls>  -->
+</div>

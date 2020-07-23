@@ -1,0 +1,189 @@
+
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+                <h1>Edit Project </h1>
+
+        </div>
+    </div>
+
+</div>
+<hr style="margin-left: -30px;margin-right: -30px;">
+<div class="row mt-20">
+    <div class="col-md-12">
+        <form [formGroup]="projectAddForm">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Project Name
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <input class="form-control" formControlName="projectName" class="form-control" maxlength="30"
+                        required autocomplete="off">
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Region
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <select class="form-control" formControlName="region">
+                        <option value="">Select Region</option>
+                        <option value="1">SRPL</option>
+                        <option value="2">NRPL</option>
+                        <option value="3">WRPL</option>
+                        <option value="4">ERPL</option>
+                        <option value="4">SERPL</option>
+                    </select> 
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Description
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <input class="form-control" formControlName="description" class="form-control" maxlength="30"
+                        required autocomplete="off">
+                </div>
+
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Approval Date
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <input class="form-control" formControlName="approvalDate" [bsConfig]="datepickerConfig"
+                    bsDatepicker>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Schedule Completion
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <input class="form-control" formControlName="scheduleCompletion" class="form-control" maxlength="30"
+                        required autocomplete="off">
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">ROW
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+                <div class="col-md-4">
+                    <select class="form-control" formControlName="row">
+                        <option value="">Select ROW</option>
+                        <option value="1">Common RoW-20%</option>
+                        <option value="2">New Row-10%</option>
+                       
+                      
+
+                    </select> 
+                </div>
+
+            </div>
+            <!-- <div > -->
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="text-input">
+                        <!-- <span style="color: red">*</span> -->
+                    </label>
+    
+                    <label class="col-md-2 col-form-label" for="text-input">Notification 3(1)
+                        <!-- <span style="color: red">*</span> -->
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" formControlName="notification" class="form-control" maxlength="30"
+                            required autocomplete="off">
+                    </div>
+    
+                </div>
+            <!-- <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">CA Office
+                </label>
+
+                <div class="col-md-4">
+                    <input class="form-control" formControlName="section" class="form-control" maxlength="30" required
+                        autocomplete="off">
+                </div>
+                <button (click)="add()"
+                    style="background-color: #63c2de;width: 35px; ;color:#fff;font-size: 18px;border-radius: 1px;">+</button>
+
+            </div>
+
+            <div class="form-group row" formArrayName="project"
+                *ngFor="let proj of projectAddForm.controls.project?.value; let i = index">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <div class="col-md-4" [formGroupName]="i">
+                    <input class="form-control" formControlName="section1" class="form-control" maxlength="30" required
+                        autocomplete="off">
+                </div>
+                <button (click)="remove(i)"
+                    style="background-color: #63c2de; width: 35px; ;color:#fff;font-size: 18px;border-radius: 1px;">-</button>
+
+            </div>
+
+ -->
+
+
+
+
+            <!-- </div> -->
+
+            <br>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">
+                    <!-- <span style="color: red">*</span> -->
+                </label>
+
+                <div class="col-md-2">
+                    <button type="submit" class="blue-button">
+                        Add
+                    </button> </div>
+                <div class="col-md-2">
+                    <button type="button" (click)="cancel()" class="cancel-button">
+                        Cancel
+                    </button> </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

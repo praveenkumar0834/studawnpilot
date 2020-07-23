@@ -1,0 +1,159 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>List of stale cheque(more than three months old)</h1>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="form-group row">
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="state">
+            <option value="">
+                <b>Select State</b></option>
+            <option>Andhra Pradesh</option>
+            <option>Arunachal Pradesh</option>
+            <option>Assam</option>
+            <option>Bihar</option>
+            <option>Chhattisgarh</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana</option>
+            <option>Himachal Pradesh </option>
+            <option>Jharkhand </option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>TamilNadu</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="district">
+            <option value="">
+                <b>Select District</b></option>
+            <option>Ariyalur</option>
+            <option>Chennai</option>
+            <option>Coimbatore</option>
+            <option>Cuddalore</option>
+            <option>Perambalur</option>
+            <option>Pudukkottai</option>
+            <option>Thanjavur</option>
+            <option>Tiruchirappalli</option>
+            <option>Tiruvarur </option>
+            <option>Dharmapuri </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="taluk">
+            <option value="">
+                <b>Select Taluk</b></option>
+            <option>Rajapalayam</option>
+            <option>Chennai</option>
+            <option>Srivilliputhur</option>
+            <option>Velacherry</option>
+            <option>Perumbakkam</option>
+            <option>Sholinganallor</option>
+            <option>Karapakkam</option>
+            <option>Thuraipakkam</option>
+            <option>Adayar </option>
+            <option>Sankarankovil </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" formControlName="village">
+            <option value="">
+                <b>Select Village</b></option>
+            <option>Kavanur</option>
+            <option>Anandavadi</option>
+            <option>Sennivanam</option>
+            <option>Kodukkur</option>
+            <option>Booluvampatti</option>
+            <option>Navamalai</option>
+
+        </select>
+    </div>
+
+
+    <div class="col-md-2">
+        <button type="button" (click)="view()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">View</button>
+    </div>
+
+    <div class="col-md-2">
+        <button type="button" (click)="export()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">Export</button>
+    </div>
+
+
+</div>
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th>Survey No</th>
+                <th>
+                    Sub No
+
+                </th>
+                <th>
+                    Type of crops
+
+                </th>
+
+                <th>
+                    Area in Hectre
+                </th>
+                <th>
+                    Beneficiary Name      
+                </th>
+                <th>
+                    Beneficiary Share
+                </th>
+                <th>
+                    Amounts (Rs)
+                </th>
+                <th>
+                    Cheque Number
+                </th>
+                <th>
+                    Cheque Date
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of userdetails">
+
+                <td>{{a.surveyNo}}</td>
+                <td>{{a.subNo}}</td>
+                <td>{{a.typeofcrop}}</td>
+                <td>{{a.areainhtr}}</td>
+                <td>{{a.beneficiaryname}}</td>
+                <td>{{a.beneficiaryshare}}</td>
+                <td>{{a.amount}}</td>
+                <td>{{a.chequeNo}}</td>
+                <td>{{a.chequeDate}}</td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+    <!-- <br> -->
+    <!-- <div *ngIf="!ticketlistdata?.length" class="col-md-12 col-centered text-center">
+        <b>No Data Found</b>
+    </div>
+    <pagination-controls (pageChange)="p = $event" (click)="ticketlist(ticketForm.value,p)"
+        class="my-pagination" style="text-align: right">
+    </pagination-controls> -->
+</div>

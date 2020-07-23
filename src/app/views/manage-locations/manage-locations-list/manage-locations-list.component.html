@@ -1,0 +1,65 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+                <h1>Location List</h1>
+            
+        </div>
+    </div>
+
+    <!-- <div class="col-md-2 mt-40">
+            <button type="submit" style="background-color: #63c2de;color:#ffffff" class="btn  btn-block" routerLink="/manage-users-add">Add Location</button>
+
+    </div>
+    -->
+
+
+    
+
+</div>
+
+
+
+
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th >
+                    State
+                </th>
+                <th >
+                    District
+
+                </th>
+                <th >
+                    Taluk
+
+                </th>
+                <th >
+                    Village
+
+                </th>
+                <th >
+                    Action
+
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let a of landdetails ">
+                
+                <td style="vertical-align:inherit">{{a.State}}</td>
+                <td style="vertical-align:inherit">{{a.District}}</td>
+                <td style="vertical-align:inherit">{{a.Taluk}}</td>
+                <td style="vertical-align:inherit">{{a.Village}}</td>
+                
+                <td style="vertical-align:inherit"><button routerLink="/manage-locations-edit" style="background-color: #000000;color:#ffffff" class="btn btn-block">Edit</button></td>
+            </tr>
+            
+
+        </tbody>
+    </table>
+    
+</div>

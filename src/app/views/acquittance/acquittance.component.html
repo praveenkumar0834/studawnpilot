@@ -1,0 +1,659 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>Acquittance(Land)</h1>
+
+        </div>
+    </div>
+
+
+</div>
+
+<!-- <div> -->
+<form [formGroup]="acquittanceForm" (ngSubmit)="acquittanceSearch(acquittanceForm.value)" class="form">
+    <div class="form-group row ">
+    <div class="col-md-2">
+        <select class="form-control" formControlName="state">
+            <option value="">
+                <b>Select State</b></option>
+            <option>Andhra Pradesh</option>
+            <option>Arunachal Pradesh</option>
+            <option>Assam</option>
+            <option>Bihar</option>
+            <option>Chhattisgarh</option>
+            <option>Goa</option>
+            <option>Gujarat</option>
+            <option>Haryana</option>
+            <option>Himachal Pradesh </option>
+            <option>Jharkhand </option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>TamilNadu</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="district">
+            <option value="">
+                <b>Select District</b></option>
+            <option>Ariyalur</option>
+            <option>Chennai</option>
+            <option>Coimbatore</option>
+            <option>Cuddalore</option>
+            <option>Perambalur</option>
+            <option>Pudukkottai</option>
+            <option>Thanjavur</option>
+            <option>Tiruchirappalli</option>
+            <option>Tiruvarur </option>
+            <option>Dharmapuri </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select class="form-control" formControlName="taluk">
+            <option value="">
+                <b>Select Taluk</b></option>
+            <option>Rajapalayam</option>
+            <option>Chennai</option>
+            <option>Srivilliputhur</option>
+            <option>Velacherry</option>
+            <option>Perumbakkam</option>
+            <option>Sholinganallor</option>
+            <option>Karapakkam</option>
+            <option>Thuraipakkam</option>
+            <option>Adayar </option>
+            <option>Sankarankovil </option>
+            <option>Erode</option>
+            <option>Salem</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <select class="form-control" formControlName="village">
+            <option value="">
+                <b>Select Village</b></option>
+            <option>Kavanur</option>
+            <option>Anandavadi</option>
+            <option>Sennivanam</option>
+            <option>Kodukkur</option>
+            <option>Booluvampatti</option>
+            <option>Navamalai</option>
+
+        </select>
+    </div>
+
+
+    <div class="col-md-2">
+        <button type="button" (click)="view()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">View</button>
+    </div>
+
+    <div class="col-md-2">
+        <button type="button" (click)="export()" style="background-color: #000000;color:#ffffff"
+            class="btn btn-block">Print</button>
+    </div>
+</div>
+</form>
+
+<!-- </div> -->
+<hr>
+
+
+
+<div class="table table-responsive" style="margin-top:20px;">
+    <table id="example" class="display table" style="width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;">
+        <thead>
+            <tr>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Location
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Survey No
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Subdiv No
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Type of crops
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Area in Hectre
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Beneficiary Name
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Beneficiary Share
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Amounts (Rs)
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Cheque Number
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Cheque Date
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Signature with stamp
+                </th>
+                <!-- <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Compensation Amount
+                </th>
+                <th style="text-align: center;color: black;vertical-align: inherit;border: 1px solid #000000;">
+                    Amount to paid
+                </th> -->
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr> -->
+            <tr style="background-color: white;">
+
+                <td
+                    style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;width: 120px">
+                    <!-- <input style="text-align: inherit;width: 120px;;height:35px;" type="text" class="form-control1"> -->
+                    Tamil Nadu<br>
+                    Tiruvallur<br>
+                    Velacherry<br>
+                    Karapakkam
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1"> -->
+                    100
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1"> -->
+                    50
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1"> -->
+                    Wet
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1"> -->
+                    6.70
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1"> -->
+                    Sabarish
+                </td>
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td> -->
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1"> -->
+                    75%
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1"> -->
+                    45000
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <!-- <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1"> -->
+                </td>
+                <!-- <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td> -->
+
+            </tr>
+            <!-- <tr style="background-color: white;">
+               
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+              
+                
+            </tr>
+            <tr style="background-color: white;">
+               
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+               
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+              
+               
+            </tr> -->
+            <!-- <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr>
+            <tr style="background-color: white;">
+              
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+              
+            </tr>
+            <tr style="background-color: white;">
+               
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                
+            </tr>
+            <tr style="background-color: white;">
+                
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                
+            </tr>
+            <tr style="background-color: white;">
+                <td colspan="1" style="text-align: center;padding:14px;vertical-align: inherit;">
+                    <b>State</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>District</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Taluk</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text">
+                </td>
+                <td colspan="1" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <b>Village</b>
+                </td>
+                <td colspan="2" style="text-align: center;padding:0px;vertical-align: inherit;">
+                    <input type="text" style="margin-right:70px;">
+                </td>
+            </tr>
+            <tr style="background-color: white;">
+                
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+               
+            </tr>
+            <tr style="background-color: white;">
+               
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+               
+            </tr>
+            <tr style="background-color: white;">
+                
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 67px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 72px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 61px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <select class="form-control1" style="width: 61px;height:35px;">
+                        <option value="">
+                            <b>Type</b></option>
+                        <option>Dry</option>
+                        <option>Wet</option>
+
+                    </select>
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 89px;height:35px;" type="text" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 52px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 66px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid #000000;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+                <td style="text-align: center;padding:0px;vertical-align: inherit;border: 1px solid black;">
+                    <input style="text-align: inherit;width: 75px;height:35px;" class="form-control1">
+                </td>
+               
+            </tr> -->
+        </tbody>
+    </table>
+
+</div>

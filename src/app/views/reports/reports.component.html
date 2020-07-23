@@ -1,0 +1,82 @@
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+            <h1>Reports</h1>
+
+        </div>
+    </div>
+</div>
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>
+                    Report Name
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-size: 16px;">List of undisbursed beneficiary</td>
+                <td><button type="button" routerLink='/undisbursed-beneficiary-list'
+                    class="btn btn-success btn-rounded"
+                    style="background-color:#de6414;width: 80px;">
+                  View
+                </button></td>
+                
+
+            </tr>
+            <tr>
+               
+                <td style="font-size: 16px;">List of pending awards</td>
+                <td><button type="button" routerLink='/pending-awards-list'
+                    class="btn btn-success btn-rounded"
+                    style=" background:#de6414;width: 80px;">
+                  View
+                </button></td>
+                
+
+            </tr>
+            <tr>
+               
+                <td style="font-size: 16px;">List of Cheque issued but not presented in bank</td>
+                <td><button type="button" routerLink='/chequeissued-list'
+                    class="btn btn-success btn-rounded"
+                    style=" background:#de6414;width: 80px;">
+                  View
+                </button></td>
+               
+
+            </tr>
+            <tr>
+               
+                <td style="font-size: 16px;">List of stale cheque (more than three months old)</td>
+                <td><button type="button" routerLink='/stale-cheque-list'
+                    class="btn btn-success btn-rounded"
+                    style=" background:#de6414;width: 80px;">
+                  View
+                </button></td>
+               
+
+            </tr>
+            <tr>
+               
+                <td style="font-size: 16px;">District/Village wise disbursement details</td>
+                <td><button type="button" routerLink='/disbursement-details'
+                    class="btn btn-success btn-rounded"
+                    style=" background:#de6414;width: 80px;">
+                  View
+                </button></td>
+               
+
+            </tr>
+        </tbody>
+    </table>
+    <!-- <pagination-controls (pageChange)="p = $event" class="my-pagination" style="text-align: right">
+</pagination-controls>  -->
+</div>

@@ -1,0 +1,102 @@
+<div class="form-group row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <h1>Users List</h1>
+
+        </div>
+    </div>
+    <div class="input-group col-md-5 mt-40">
+        <input  [(ngModel)]="searchtext" name="search"  id="search" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-append">
+            <button  (click)="list(searchtext)" type="button" style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+    <div class="col-md-2 mt-40">
+        <button type="submit" style="margin-left:93px;"  class="blue-button" routerLink="/manage-users-add">Add User</button>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th>Name</th>
+                <th>
+                    Role
+
+                </th>
+                <th>
+                    Region/Location
+
+                </th>
+
+                <th>
+                    Email Id
+                </th>
+                <th>
+                    Phone number
+
+
+                </th>
+                <th>
+                    Status
+
+
+                </th>
+                <th>
+                    Last updated on
+                </th>
+                <th>Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let a of userList" routerLink="/manage-users-edit/{{a.userId}} | filter:searchtext" > -->
+                <tr *ngFor="let a of userList" routerLink="/manage-users-edit/{{a.userId}} " >
+                <td> {{a.userName}}</td>
+                <td>{{a.role.roleName}}</td>
+                <td>{{a.region.gmName}}</td>
+
+                <td>{{a.email}}</td>
+                <td>{{a.contactNumber}}</td>
+                <td>{{a.userStatus}}</td>
+                <td><span *ngIf="a.updatedTime != null">{{a.updatedTime| date : 'medium'}}</span>
+                <span *ngIf="a.updatedTime == null">NA</span></td>
+
+                <td style="cursor:pointer">
+                    <p>Edit</p>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <!-- <br> -->
+    <!-- <div *ngIf="!ticketlistdata?.length" class="col-md-12 col-centered text-center">
+        <b>No Data Found</b>
+    </div>
+    <pagination-controls (pageChange)="p = $event" (click)="ticketlist(ticketForm.value,p)"
+        class="my-pagination" style="text-align: right">
+    </pagination-controls> -->
+    
+<p-paginator [rows]="10" [totalRecords]="totalCount"  (onPageChange)="paginate($event)"  ></p-paginator>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  fullScreen="false"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

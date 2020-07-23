@@ -1,0 +1,315 @@
+<div class="form-group row">
+    <div class="col-md-10">
+        <div class="input-group">
+            <h1>{{pageTitle}}</h1>
+        </div>
+    </div>
+
+</div>
+<hr style="margin-left: -30px;margin-right: -30px;">
+
+<div class="row">
+    <div class="col-md-12">
+        <form name="form" #f="ngForm" novalidate>
+            <br>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Name
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input pattern="^[A-Za-z0-9 ]+$" class="form-control" name='caName' #caName="ngModel"
+                        [(ngModel)]="caOfficeDtls.caName" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && caName.invalid">
+                        <div *ngIf="caName.errors.required" class="text-danger text-left">Name is required</div>
+
+                        <div *ngIf="caName.errors.pattern" class="text-danger text-left">Enter Valid Name</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Gazette Notification No
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='gazetteNotificationNumber' #gazetteNotificationNumber="ngModel"
+                        [(ngModel)]="caOfficeDtls.gazetteNotificationNumber" pattern="^[0-9 ]+$" class="form-control"
+                        autocomplete="off" required>
+
+                    <div *ngIf="f.submitted && gazetteNotificationNumber.invalid">
+                        <div *ngIf="gazetteNotificationNumber.errors.required" class="text-danger text-left">Gazette is
+                            required</div>
+
+                        <div *ngIf="gazetteNotificationNumber.errors.pattern" class="text-danger text-left">Enter Valid
+                            Gazette</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">State
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+
+                    <select name="state" #state="ngModel" required [(ngModel)]="caOfficeDtls.stateId"
+                        class="form-control">
+                        <option value="" disabled selected>Select State</option>
+                        <option *ngFor="let x of stateList" value={{x.stateId}}>{{x.stateName}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && state.invalid">
+                        <div *ngIf="state.errors.required" class="text-danger text-left">State is required</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Vendor Code
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='vendorCode' #vendorCode="ngModel" [(ngModel)]="caOfficeDtls.vendorCode"
+                        pattern="^[0-9 ]+$" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && vendorCode.invalid">
+                        <div *ngIf="vendorCode.errors.required" class="text-danger text-left">VendorCode is required
+                        </div>
+
+                        <div *ngIf="vendorCode.errors.pattern" class="text-danger text-left">Enter Valid VendorCode
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Location
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    
+                    <p-dropdown [options]="locationList"  required placeholder="Select a Location" defaultLabel="Choose Location" [(ngModel)]="locationval" name ='location' #location="ngModel" styleClass='W-100' [filter]=true optionLabel="districtName"></p-dropdown>   
+                    <div *ngIf="f.submitted && location.invalid">
+                        <div *ngIf="location.errors.required" class="text-danger text-left">Location is required</div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+
+                <label class="col-md-2 col-form-label" for="text-input">Section
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <p-multiSelect required name='sectionIds' #sectionIds="ngModel" optionLabel="sectionName"
+                        [options]="sectionList" [(ngModel)]="selectedSections" placeholder="Select Section"
+                        defaultLabel="Choose Section"></p-multiSelect>
+                    <div *ngIf="f.submitted && sectionIds.invalid">
+                        <div *ngIf="sectionIds.errors.required" class="text-danger text-left">Section is
+                            required</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row" style="margin-top:20px;">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Region
+                </label>
+                <div class="col-md-4">
+                    <select name='region' disabled #region="ngModel" [(ngModel)]="loginusrDetails.regionId"
+                        class="form-control">
+                        <option [value]="loginusrDetails.regionId">{{loginusrDetails.regionName}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Contact
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='contactNumber' #contactNumber="ngModel" [(ngModel)]="caOfficeDtls.contactNumber"
+                        pattern="^[789]\d{9}$" class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && contactNumber.invalid">
+                        <div *ngIf="contactNumber.errors.required" class="text-danger text-left">Contact is required
+                        </div>
+
+                        <div *ngIf="contactNumber.errors.pattern" class="text-danger text-left">Enter Valid Contact
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Address
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='address' #address="ngModel" [(ngModel)]="caOfficeDtls.address" pattern="[a-zA-Z ]*"
+                        class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && address.invalid">
+                        <div *ngIf="address.errors.required" class="text-danger text-left">Address is required
+                        </div>
+
+                        <div *ngIf="address.errors.pattern" class="text-danger text-left">Enter valid address
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Bank
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='bank' #bank="ngModel" [(ngModel)]="caOfficeDtls.bank" pattern="^[a-zA-Z ]+$"
+                        class="form-control" autocomplete="off" required>
+                    <div *ngIf="f.submitted && bank.invalid">
+                        <div *ngIf="bank.errors.required" class="text-danger text-left">Bank name is required
+                        </div>
+
+                        <div *ngIf="bank.errors.pattern" class="text-danger text-left">Enter valid bank name
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Bank Account
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='accountNumber' #accountNumber="ngModel" [(ngModel)]="caOfficeDtls.accountNumber"
+                        pattern="^[0-9]*$" class="form-control" autocomplete="off" required>
+
+                    <div *ngIf="f.submitted && accountNumber.invalid">
+                        <div *ngIf="accountNumber.errors.required" class="text-danger text-left">Account Number is
+                            required</div>
+
+                        <div *ngIf="accountNumber.errors.pattern" class="text-danger text-left">Enter Valid Account
+                            number</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Bank Branch Code
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='bankBranchCode' #bankBranchCode="ngModel" [(ngModel)]="caOfficeDtls.bankBranchCode"
+                        pattern="^[a-zA-Z ]+$" class="form-control" autocomplete="off" required>
+
+                    <div *ngIf="f.submitted && bankBranchCode.invalid">
+                        <div *ngIf="bankBranchCode.errors.required" class="text-danger text-left">Bank branch is
+                            required</div>
+
+                        <div *ngIf="bankBranchCode.errors.pattern" class="text-danger text-left">Enter Valid bank branch
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Pan No
+                    <span style="color: red">*</span>
+                </label>
+                <div class="col-md-4">
+                    <input name='panNumber' #panNumber="ngModel" [(ngModel)]="caOfficeDtls.panNumber"
+                        pattern="^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$" class="form-control" maxlength="30"
+                        autocomplete="off" [ngClass]="{ 'is-invalid': f.submitted && panNumber.invalid }" required>
+
+                    <div *ngIf="f.submitted && panNumber.invalid">
+                        <div *ngIf="panNumber.errors.required" class="text-danger text-left">Pan is required</div>
+
+                        <div *ngIf="panNumber.errors.pattern" class="text-danger text-left">Enter Valid Pan</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">
+                </label>
+                <label class="col-md-2 col-form-label" for="text-input">Status
+                    <span style="color: red">*</span>
+                </label>
+                <div *ngIf="addbtnFlag" class="col-md-4">
+                    <select name='caOffciestatus' disabled #caOffciestatus="ngModel"
+                        [(ngModel)]="caOfficeDtls.caOffciestatus" class="form-control">
+
+                        <option value="">Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">InActive</option>
+
+                    </select>
+
+                </div>
+                <div *ngIf="!addbtnFlag" class="col-md-4">
+                    <select name='caOffciestatus' #caOffciestatus="ngModel" [(ngModel)]="caOfficeDtls.caOffciestatus"
+                        class="form-control">
+
+                        <option value="">Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">InActive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="text-input">
+                </label>
+                <div class="col-md-2" *ngIf="addbtnFlag">
+                    <button type="submit" (click)="addCAOffice(f.form.valid)" class="blue-button">
+                        Add
+                    </button> </div>
+
+                <div class="col-md-2" *ngIf="!addbtnFlag">
+                    <button type="submit" (click)="updateCAOffice(f.form.valid)" class="blue-button">
+                        Update
+                    </button> </div>
+
+                <div class="col-md-2">
+                    <button type="submit" (click)="cancel()" class="cancel-button">
+                        Cancel
+                    </button> </div>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+<p-toast position="bottom-right"></p-toast>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-beat" fullScreen="false">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

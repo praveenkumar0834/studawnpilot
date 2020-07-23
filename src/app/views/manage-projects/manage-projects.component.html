@@ -1,0 +1,103 @@
+<div class="form-group row">
+    <div class="col-md-3">
+        <div class="input-group">
+            <h1>Project List</h1>
+
+        </div>
+    </div>
+    <div class="input-group col-md-5 mt-40">
+        <input  [(ngModel)]="searchtext" name="search"  id="search" type="text" class="form-control" placeholder="Search">
+        <span class="input-group-append">
+            <button  (click)="list(searchtext)" type="button" style="background: #363b4a;height:35px;"
+                class="btn btn-block btn-ghost-danger active">Search</button>
+        </span>
+    </div>
+    <div class="input-group col-md-2 mt-40">
+        <label class="col-md-2 col-form-label" for="text-input">
+            <!-- <span style="color: red">*</span> -->
+        </label>
+
+
+    </div>
+    
+    <div class="col-md-2 mt-40">
+        <button type="submit" class="blue-button" routerLink="/project-add">Add Project</button>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<hr>
+<div class="table table-responsive">
+    <table id="example" class="display table" style="width: 100%;">
+        <thead>
+            <tr style="background-color: transparent;">
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Region
+
+                </th>
+                <!-- <th>
+                    State
+
+                </th> -->
+                <th>
+                   Approval Date
+
+                </th>
+                <th>
+                   Schedule Completion
+ 
+                 </th>
+                 <th>
+                    RoW
+  
+                  </th>
+                <th>
+                    Actions
+
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of projectList" routerLink="/project-edit/{{a.projectId}}">
+
+                <td style="vertical-align:inherit">{{a.projectName}}</td>
+                <td style="vertical-align:inherit">{{a.region.gmName}}</td>
+                <td><span *ngIf="a.approvalDate != null">{{a.approvalDate}}</span>
+                    <span *ngIf="a.approvalDate == null">NA</span></td>
+                    <td><span *ngIf="a.scheduleCompletionDate != null">{{a.scheduleCompletionDate}}</span>
+                        <span *ngIf="a.scheduleCompletionDate == null">NA</span></td>
+                <td style="vertical-align:inherit">{{a.row.rowName}}</td>
+
+                <td style="cursor:pointer">
+                    <p>Edit</p>
+                </td>
+                <!-- <td style="vertical-align:inherit"><button 
+                        style="background-color: #000000;color:#ffffff" class="btn btn-block">Edit</button></td> -->
+            </tr>
+
+
+        </tbody>
+    </table>
+    <p-paginator [rows]="10" [totalRecords]="totalCount"  (onPageChange)="paginate($event)"  ></p-paginator>
+
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
