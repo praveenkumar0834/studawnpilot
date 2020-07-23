@@ -26,10 +26,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
 "build:studawnpilot": "ng build --output-path=/var/www/html/dist",
-#"server:studawnpilot": "node dist/server.js",
-#"build:client-and-server-bundles": "ng build --prod && ng run demo:server:production",
-#"webpack:server": "webpack --config webpack.server.config.js --progress --colors",
-#"start:studawnpilot:": "npm run build:studawnpilot && npm run server:studawnpilot"
+"server:studawnpilot": "node dist/server.js",
+"build:client-and-server-bundles": "ng build --prod && ng run demo:server:production",
+"webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+"start:studawnpilot:": "npm run build:studawnpilot && npm run server:studawnpilot"
   
   },
   "private": true,
