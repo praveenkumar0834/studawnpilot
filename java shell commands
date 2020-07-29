@@ -1,0 +1,5 @@
+
+rm -rf /usr/apache-tomcat-9.0.37/webapps/studawntest.war
+cd ~/.jenkins/workspace/java_maven/target/
+mv studawntest-2.0.0.RELEASE.war studawntest.war
+mv studawntest.war /usr/apache-tomcat-9.0.37/webapps/

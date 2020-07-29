@@ -1,0 +1,6 @@
+rm -rf ~/.jenkins/workspace/angular/dist/
+rm -rf /var/www/html/assets/
+ng build
+cd ~/.jenkins/workspace/angular/dist/
+mv * /var/www/html/
+echo "regarding deployment" | mail -s "Angular build successfully deployed" -a "From: praveenkumar.r@3edge.in" kumar.praveen0834@gmail.com
