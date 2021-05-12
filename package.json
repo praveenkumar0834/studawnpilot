@@ -44,7 +44,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@sweetalert2/ngx-sweetalert2": "^7.2.0",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.9.2",
+    "chart.js": "^2.9.4",
     "core-js": "^2.6.10",
     "flag-icon-css": "^3.4.5",
     "font-awesome": "^4.7.0",
